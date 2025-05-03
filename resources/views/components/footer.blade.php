@@ -10,7 +10,7 @@
                                 </div>
                                 <p>When the world offers you robots, we bring you real human connections.</p>
 
-                                <p>Let’s KONEK together! Advance your career and studies, and create a real impact!</p>
+                                <p>Let's KONEK together! Advance your career and studies, and create a real impact!</p>
                                 <div class="social">
                                     <ul>
                                         <li>
@@ -43,10 +43,10 @@
                                     <h3>About</h3>
                                 </div>
                                 <ul>
-                                    <li><a href="index.php">Home</a></li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="course.html">Testimonial</a></li>
-                                    <li><a href="teacher.html">Blog</a></li>
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="/about">About Us</a></li>
+                                    <li><a href="/testimonial">Testimonial</a></li>
+                                    <li><a href="/blog">Blog</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -55,12 +55,16 @@
                                 <div class="widget-title">
                                     <h3>Connections</h3>
                                 </div>
+                                @php
+                                    // Fetch active product categories
+                                    $footerCategories = \App\Models\ProductCategory::where('status', '2')->orderBy('product_category')->get();
+                                @endphp
                                 <ul>
-                                    <li><a href="contact.html">Konek Coffee Chat</a></li>
-                                    <li><a href="course.html">Konek Mentorship</a></li>
-                                    <li><a href="lesson.html">Konek Mock Interview</a></li>
-                                    <li><a href="testimonial.html">Konek Event</a></li>
-                                    <li><a href="register.html">Register</a></li>
+                                    @foreach($footerCategories as $category)
+                                        <li><a href="{{ route('product.by-category', $category->slug) }}">Konek {{ $category->product_category }}</a></li>
+                                    @endforeach
+                                    {{-- Keep static links if needed --}}
+                                    {{-- <li><a href="{{ route('register') }}">Register</a></li> --}}
                                 </ul>
                             </div>
                         </div>

@@ -4,28 +4,36 @@
 
 @section('content')
 
+    @php
+        // Assuming the first record is the main About Us content
+        $aboutContent = $cmsAbout->firstWhere('id_about_us', 1);
+        // Assuming the second record is the Founder's Story
+        $founderStory = $cmsAbout->firstWhere('id_about_us', 2);
+    @endphp
+
     <section class="wpo-page-title">
         <div class="container">
             <div class="row">
                 <div class="col col-xs-12">
                     <div class="wpo-breadcumb-wrap">
-                        <h2>About Us</h2>
+                        <h2>{{ $aboutContent->title ?? 'About Us' }}</h2>
                         <ol class="wpo-breadcumb-wrap">
-                            <li><a href="index.html">Home</a></li>
-                            <li>About Us</li>
+                            <li><a href="{{ route('home') }}">Home</a></li>
+                            <li>{{ $aboutContent->sub_title ?? 'About Us' }}</li>
                         </ol>
                     </div>
                 </div>
             </div> <!-- end row -->
         </div> <!-- end container -->
-        <div class="shape-1"><img src="assets/images/shape/1.svg" alt=""></div>
-        <div class="shape-2"><img src="assets/images/shape/2.svg" alt=""></div>
-        <div class="shape-3"><img src="assets/images/shape/3.svg" alt=""></div>
-        <div class="shape-4"><img src="assets/images/shape/4.svg" alt=""></div>
+        <div class="shape-1"><img src="{{ asset('assets/images/shape/1.svg') }}" alt=""></div>
+        <div class="shape-2"><img src="{{ asset('assets/images/shape/2.svg') }}" alt=""></div>
+        <div class="shape-3"><img src="{{ asset('assets/images/shape/3.svg') }}" alt=""></div>
+        <div class="shape-4"><img src="{{ asset('assets/images/shape/4.svg') }}" alt=""></div>
     </section>
     <!-- end page-title -->
 
     <!-- start of wpo-about-section -->
+    @if($aboutContent)
     <section class="wpo-about-section section-padding">
         <div class="container">
             <div class="wpo-about-wrap">
@@ -33,15 +41,20 @@
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="wpo-about-img-wrap">
                             <div class="wpo-about-img-right">
-                                <img src="assets/images/ilustration/ilustration-letskonek-07.png" alt="">
+                                @if($aboutContent->gambar)
+                                    <img src="{{ asset('storage/' . $aboutContent->gambar) }}" alt="{{ $aboutContent->title }}">
+                                @else
+                                    <img src="{{ asset('assets/images/ilustration/ilustration-letskonek-07.png') }}" alt="About Konek Default Image">
+                                @endif
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="wpo-about-text">
                             <div class="wpo-section-title">
-                                <small>About Konek</small>
-                                <h2>A New Different Way To Improve Your
+                                <small>{{ $aboutContent->sub_title ?? 'About Konek' }}</small>
+                                <h2>{{ $aboutContent->title ?? 'A New Different Way To Improve Your Skills.' }}
+                                    {{-- Shape element kept for styling --}}
                                     <span>
                                         Skills.
                                         <i class="shape">
@@ -54,60 +67,19 @@
                                     </span>
                                 </h2>
                             </div>
-                            <p>Welcome to KONEK! In today’s era of AI and automation, real human connections remain essential. KONEK bridges the gap between technology and genuine interaction, offering personalized support, relevant insights, and valuable networking opportunities to help you advance your career and education.</p>
-                            <p>Connect with professionals, alumni, and peers for tailored guidance and practical advice. Let’s Konek and take the next step toward your success — together!</p>
-                            <!-- <div class="wpo-about-features-wrap">
-                                <div class="wpo-about-features-item">
-                                    <div class="wpo-about-features-icon">
-                                        <div class="icon">
-                                            <i class="fi flaticon-training-1"></i>
-                                        </div>
-                                    </div>
-                                    <div class="wpo-about-features-text">
-                                        <h5>1250+ Courses</h5>
-                                    </div>
-                                </div>
-                                <div class="wpo-about-features-item">
-                                    <div class="wpo-about-features-icon">
-                                        <div class="icon">
-                                            <i class="fi flaticon-video-lesson"></i>
-                                        </div>
-                                    </div>
-                                    <div class="wpo-about-features-text">
-                                        <h5>500+ Free Class</h5>
-                                    </div>
-                                </div>
-                                <div class="wpo-about-features-item">
-                                    <div class="wpo-about-features-icon">
-                                        <div class="icon">
-                                            <i class="fi flaticon-team"></i>
-                                        </div>
-                                    </div>
-                                    <div class="wpo-about-features-text">
-                                        <h5>25k Students</h5>
-                                    </div>
-                                </div>
-                                <div class="wpo-about-features-item">
-                                    <div class="wpo-about-features-icon">
-                                        <div class="icon">
-                                            <i class="fi flaticon-training"></i>
-                                        </div>
-                                    </div>
-                                    <div class="wpo-about-features-text">
-                                        <h5>250+ Mentors</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="about.html" class="theme-btn-s2">Learn More About Us</a> -->
+                            <div>{!! $aboutContent->description !!}</div>
+                            {{-- Removed static feature blocks --}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    @endif
     <!-- end of wpo-about-section -->
 
-    <!-- start of wpo-courses-section -->
+    <!-- start of Founder Story section -->
+    @if($founderStory)
     <section class="wpo-courses-section section-padding">
         <div class="container">
             <div class="wpo-about-wrap">
@@ -115,8 +87,9 @@
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="wpo-about-text">
                             <div class="wpo-section-title">
-                                <small>Founder's Story</small>
-                                <h2>Christiani Sagala
+                                <small>{{ $founderStory->sub_title ?? 'Founder Story' }}</small>
+                                <h2>{{ $founderStory->title ?? 'Christiani Sagala' }}
+                                    {{-- Shape element kept for styling --}}
                                     <span>
                                         <i class="shape">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 206 53" fill="none">
@@ -126,34 +99,40 @@
                                     </span>
                                 </h2>
                             </div>
-                            <p>Christiani Sagala spent her childhood in Sumatra, Indonesia, born in West Sumatra and raised in Jambi province. She pursued her studies in Communication Science at Universitas Indonesia. Inspired by her personal journey and the people she encountered along the way, Christiani is deeply passionate about youth development and its profound impact on individuals, families, and future generations. Her enthusiasm for sustainability led her to establish several initiatives in this field, drawing on her professional experience. An avid traveler and lifelong learner, she recently completed her MBA at Cornell University, New York, in 2024. Christiani firmly believes in the transformative power of education to bring freedom and empower lives.</p>
+                            <div>{!! $founderStory->description !!}</div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="wpo-about-img-wrap">
                             <div class="wpo-about-img-right">
-                                <img src="assets/images/ilustration/ilustration-letskonek-17.jpg" alt="" style="border-radius: 20px;">
+                                @if($founderStory->gambar)
+                                    <img src="{{ asset('storage/' . $founderStory->gambar) }}" alt="{{ $founderStory->title }}" style="border-radius: 20px;">
+                                @else
+                                    <img src="{{ asset('assets/images/ilustration/ilustration-letskonek-17.jpg') }}" alt="Founder Story Default Image" style="border-radius: 20px;">
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="shape-1"><img src="assets/images/shape/1.svg" alt=""></div>
-        <div class="shape-2"><img src="assets/images/shape/2.svg" alt=""></div>
-        <div class="shape-3"><img src="assets/images/shape/3.svg" alt=""></div>
-        <div class="shape-4"><img src="assets/images/shape/4.svg" alt=""></div>
+        <div class="shape-1"><img src="{{ asset('assets/images/shape/1.svg') }}" alt=""></div>
+        <div class="shape-2"><img src="{{ asset('assets/images/shape/2.svg') }}" alt=""></div>
+        <div class="shape-3"><img src="{{ asset('assets/images/shape/3.svg') }}" alt=""></div>
+        <div class="shape-4"><img src="{{ asset('assets/images/shape/4.svg') }}" alt=""></div>
     </section>
-    <!-- end of wpo-courses-section -->
+    @endif
+    <!-- end of Founder Story section -->
 
     <!-- start wpo-Team-section -->
+    @if($teams->isNotEmpty())
     <section class="wpo-team-section section-padding">
         <div class="container">
             <div class="wpo-section-title-s2">
                 <small>Our Professionals</small>
                 <h2>Meet our
                     <span>
-                        Teachers
+                        Teachers {{-- Or Teachers if preferred --}}
                         <i class="shape">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 206 53" fill="none">
                                 <path
@@ -165,86 +144,49 @@
             </div>
             <div class="wpo-team-wrap">
                 <div class="row">
-                    <div class="col col-lg-3 col-md-6 col-12">
-                        <div class="wpo-team-item">
-                            <div class="wpo-team-img">
-                                <div class="wpo-team-img-box">
-                                    <img src="assets/images/team/1.jpg" alt="">
-                                    <ul>
-                                        <li><a href="#"><i class="fi flaticon-facebook-app-symbol"></i></a></li>
-                                        <li><a href="#"><i class="fi flaticon-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fi flaticon-linkedin"></i></a></li>
-                                    </ul>
+                    @foreach ($teams as $team)
+                        <div class="col col-lg-3 col-md-6 col-12">
+                            <div class="wpo-team-item">
+                                <div class="wpo-team-img">
+                                    <div class="wpo-team-img-box">
+                                        @if($team->gambar)
+                                            <img src="{{ asset('storage/' . $team->gambar) }}" alt="{{ $team->title }}">
+                                        @else
+                                            <img src="{{ asset('assets/images/team/1.jpg') }}" alt="{{ $team->title }}"> {{-- Default image --}}
+                                        @endif
+                                        {{-- Social links can be added later if needed --}}
+                                        
+                                        <ul>
+                                            <li><a href="#"><i class="fi flaticon-facebook-app-symbol"></i></a></li>
+                                            <li><a href="#"><i class="fi flaticon-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fi flaticon-linkedin"></i></a></li>
+                                        </ul> 
+                                       
+                                    </div>
+                                </div>
+                                <div class="wpo-team-text">
+                                    {{-- Use Team model fields and link to mentor detail route --}}
+                                    @if($team->slug)
+                                        {{-- Linking to mentor.detail but passing team slug --}}
+                                        <h2><a href="{{ route('mentor.detail', $team->slug) }}">{{ $team->title }}</a></h2>
+                                    @else
+                                        <h2>{{ $team->title }}</h2>
+                                    @endif
+                                    {{-- Use sub_title from Team model --}}
+                                    <span>{{ $team->sub_title ?? '' }}</span>
                                 </div>
                             </div>
-                            <div class="wpo-team-text">
-                                <h2><a href="teacher-single.html">Jenny Wilson</a></h2>
-                                <span>Graphic Designer</span>
-                            </div>
                         </div>
-                    </div>
-                    <div class="col col-lg-3 col-md-6 col-12">
-                        <div class="wpo-team-item active">
-                            <div class="wpo-team-img">
-                                <div class="wpo-team-img-box">
-                                    <img src="assets/images/team/2.jpg" alt="">
-                                    <ul>
-                                        <li><a href="#"><i class="fi flaticon-facebook-app-symbol"></i></a></li>
-                                        <li><a href="#"><i class="fi flaticon-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fi flaticon-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="wpo-team-text">
-                                <h2><a href="teacher-single.html">Dianne Russell</a></h2>
-                                <span>UX Designer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-lg-3 col-md-6 col-12">
-                        <div class="wpo-team-item">
-                            <div class="wpo-team-img">
-                                <div class="wpo-team-img-box">
-                                    <img src="assets/images/team/3.jpg" alt="">
-                                    <ul>
-                                        <li><a href="#"><i class="fi flaticon-facebook-app-symbol"></i></a></li>
-                                        <li><a href="#"><i class="fi flaticon-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fi flaticon-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="wpo-team-text">
-                                <h2><a href="teacher-single.html">Courtney Henry</a></h2>
-                                <span>Senior Marketer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-lg-3 col-md-6 col-12">
-                        <div class="wpo-team-item">
-                            <div class="wpo-team-img">
-                                <div class="wpo-team-img-box">
-                                    <img src="assets/images/team/4.jpg" alt="">
-                                    <ul>
-                                        <li><a href="#"><i class="fi flaticon-facebook-app-symbol"></i></a></li>
-                                        <li><a href="#"><i class="fi flaticon-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fi flaticon-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="wpo-team-text">
-                                <h2><a href="teacher-single.html">Annette Black</a></h2>
-                                <span>Web Developer</span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div> <!-- end container -->
-        <div class="shape-1"><img src="assets/images/team/shape-1.svg" alt=""></div>
-        <div class="shape-2"><img src="assets/images/team/shape-2.svg" alt=""></div>
-        <div class="shape-3"><img src="assets/images/team/shape-3.svg" alt=""></div>
-        <div class="shape-4"><img src="assets/images/team/shape-4.svg" alt=""></div>
+        <div class="shape-1"><img src="{{ asset('assets/images/team/shape-1.svg') }}" alt=""></div>
+        <div class="shape-2"><img src="{{ asset('assets/images/team/shape-2.svg') }}" alt=""></div>
+        <div class="shape-3"><img src="{{ asset('assets/images/team/shape-3.svg') }}" alt=""></div>
+        <div class="shape-4"><img src="{{ asset('assets/images/team/shape-4.svg') }}" alt=""></div>
     </section>
+    @endif
     <!-- end Team-section -->
 
     <!-- start wpo-subscribe-section -->

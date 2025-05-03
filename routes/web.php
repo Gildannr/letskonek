@@ -20,6 +20,7 @@ Route::get('/service/{category_slug}', [ProductController::class, 'index'])->nam
 Route::get('/service/{category_slug}/{product_slug}', [ProductController::class, 'detail'])->name('product.detail');
 
 Route::get('/mentors', [MentorsController::class, 'index'])->name('mentors');
+Route::get('/mentor/{slug}', [MentorsController::class, 'detail'])->name('mentor.detail');
 Route::get('/konek', [KonekController::class, 'index'])->name('konek');
 
 Route::middleware('guest')->group(function () {

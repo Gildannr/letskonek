@@ -10,19 +10,19 @@
                 <div class="row">
                     <div class="col col-xs-12">
                         <div class="wpo-breadcumb-wrap">
-                            <h2>Teachers</h2>
+                            <h2>Meet Our Teachers</h2>
                             <ol class="wpo-breadcumb-wrap">
-                                <li><a href="index.html">Home</a></li>
-                                <li>Teachers</li>
+                                <li><a href="{{ route('home') }}">Home</a></li>
+                                <li>Our Teachers</li>
                             </ol>
                         </div>
                     </div>
                 </div> <!-- end row -->
             </div> <!-- end container -->
-            <div class="shape-1"><img src="assets/images/shape/1.svg" alt=""></div>
-            <div class="shape-2"><img src="assets/images/shape/2.svg" alt=""></div>
-            <div class="shape-3"><img src="assets/images/shape/3.svg" alt=""></div>
-            <div class="shape-4"><img src="assets/images/shape/4.svg" alt=""></div>
+            <div class="shape-1"><img src="{{ asset('assets/images/shape/1.svg') }}" alt=""></div>
+            <div class="shape-2"><img src="{{ asset('assets/images/shape/2.svg') }}" alt=""></div>
+            <div class="shape-3"><img src="{{ asset('assets/images/shape/3.svg') }}" alt=""></div>
+            <div class="shape-4"><img src="{{ asset('assets/images/shape/4.svg') }}" alt=""></div>
         </section>
         <!-- end page-title -->
 
@@ -45,85 +45,51 @@
                 </div>
                 <div class="wpo-team-wrap">
                     <div class="row">
-                        <div class="col col-lg-3 col-md-6 col-12">
-                            <div class="wpo-team-item">
-                                <div class="wpo-team-img">
-                                    <div class="wpo-team-img-box">
-                                        <img src="assets/images/team/1.jpg" alt="">
-                                        <ul>
-                                            <li><a href="#"><i class="fi flaticon-facebook-app-symbol"></i></a></li>
-                                            <li><a href="#"><i class="fi flaticon-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fi flaticon-linkedin"></i></a></li>
-                                        </ul>
+                        @forelse ($teams as $team)
+                            <div class="col col-lg-3 col-md-6 col-12">
+                                <div class="wpo-team-item">
+                                    <div class="wpo-team-img">
+                                        <div class="wpo-team-img-box">
+                                            @if($team->gambar)
+                                                <img src="{{ asset('storage/' . $team->gambar) }}" alt="{{ $team->title }}">
+                                            @else
+                                                <img src="{{ asset('assets/images/team/1.jpg') }}" alt="{{ $team->title }}"> {{-- Default image --}}
+                                            @endif
+                                            {{-- Social links can be added later if needed --}}
+                                            {{-- 
+                                            <ul>
+                                                <li><a href="#"><i class="fi flaticon-facebook-app-symbol"></i></a></li>
+                                                <li><a href="#"><i class="fi flaticon-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fi flaticon-linkedin"></i></a></li>
+                                            </ul> 
+                                            --}}
+                                        </div>
+                                    </div>
+                                    <div class="wpo-team-text">
+                                        @if($team->slug)
+                                            <h2><a href="{{ route('mentor.detail', $team->slug) }}">{{ $team->title }}</a></h2>
+                                        @else
+                                            <h2>{{ $team->title }}</h2>
+                                        @endif
+                                        <span>{{ $team->sub_title ?? '' }}</span>
                                     </div>
                                 </div>
-                                <div class="wpo-team-text">
-                                    <h2><a href="mentor_detail.php">Jenny Wilson</a></h2>
-                                    <span>Graphic Designer</span>
-                                </div>
                             </div>
-                        </div>
-                        <div class="col col-lg-3 col-md-6 col-12">
-                            <div class="wpo-team-item active">
-                                <div class="wpo-team-img">
-                                    <div class="wpo-team-img-box">
-                                        <img src="assets/images/team/2.jpg" alt="">
-                                        <ul>
-                                            <li><a href="#"><i class="fi flaticon-facebook-app-symbol"></i></a></li>
-                                            <li><a href="#"><i class="fi flaticon-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fi flaticon-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="wpo-team-text">
-                                    <h2><a href="mentor_detail.php">Dianne Russell</a></h2>
-                                    <span>UX Designer</span>
-                                </div>
+                        @empty
+                            <div class="col-12 text-center">
+                                <p>No team members found.</p>
                             </div>
-                        </div>
-                        <div class="col col-lg-3 col-md-6 col-12">
-                            <div class="wpo-team-item">
-                                <div class="wpo-team-img">
-                                    <div class="wpo-team-img-box">
-                                        <img src="assets/images/team/3.jpg" alt="">
-                                        <ul>
-                                            <li><a href="#"><i class="fi flaticon-facebook-app-symbol"></i></a></li>
-                                            <li><a href="#"><i class="fi flaticon-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fi flaticon-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="wpo-team-text">
-                                    <h2><a href="mentor_detail.php">Courtney Henry</a></h2>
-                                    <span>Senior Marketer</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col-lg-3 col-md-6 col-12">
-                            <div class="wpo-team-item">
-                                <div class="wpo-team-img">
-                                    <div class="wpo-team-img-box">
-                                        <img src="assets/images/team/4.jpg" alt="">
-                                        <ul>
-                                            <li><a href="#"><i class="fi flaticon-facebook-app-symbol"></i></a></li>
-                                            <li><a href="#"><i class="fi flaticon-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fi flaticon-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="wpo-team-text">
-                                    <h2><a href="mentor_detail.php">Annette Black</a></h2>
-                                    <span>Web Developer</span>
-                                </div>
-                            </div>
-                        </div>
+                        @endforelse
+                    </div>
+                    <div class="pagination-wrapper pagination-wrapper-center mt-5">
+                        {{ $teams->links('vendor.pagination.custom') }}
                     </div>
                 </div>
             </div> <!-- end container -->
-            <div class="shape-1"><img src="assets/images/team/shape-1.svg" alt=""></div>
-            <div class="shape-2"><img src="assets/images/team/shape-2.svg" alt=""></div>
-            <div class="shape-3"><img src="assets/images/team/shape-3.svg" alt=""></div>
-            <div class="shape-4"><img src="assets/images/team/shape-4.svg" alt=""></div>
+            <div class="shape-1"><img src="{{ asset('assets/images/team/shape-1.svg') }}" alt=""></div>
+            <div class="shape-2"><img src="{{ asset('assets/images/team/shape-2.svg') }}" alt=""></div>
+            <div class="shape-3"><img src="{{ asset('assets/images/team/shape-3.svg') }}" alt=""></div>
+            <div class="shape-4"><img src="{{ asset('assets/images/team/shape-4.svg') }}" alt=""></div>
         </section>
         <!-- end Team-section -->
 

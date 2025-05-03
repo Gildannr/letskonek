@@ -297,17 +297,28 @@
     <!-- end of features slider -->
 
      <!-- start wpo-choose-section -->
+     @if($video)
      <section class="wpo-choose-section-s2">
         <div class="container">
             <div class="right-img">
-                <!-- <img src="assets/images/slider/video.jpg" alt=""> -->
-                <img src="assets/images/ilustration/ilustration-letskonek-13.jpg" alt="">
-                <a href="https://www.youtube.com/embed/FNTfC0BTqjU?autoplay=1" class="video-btn" data-type="iframe">
-                    <i class="fi flaticon-play-1"></i>
-                </a>
+                {{-- Use dynamic image from Video model, fallback to default --}}
+                @if($video->gambar)
+                    <img src="{{ asset('storage/' . $video->gambar) }}" alt="Video Thumbnail">
+                @else
+                    <img src="{{ asset('assets/images/ilustration/ilustration-letskonek-13.jpg') }}" alt="Default Video Thumbnail">
+                @endif
+                
+                {{-- Use dynamic video URL from Video model --}}
+                {{-- WARNING: Assumes $video->video contains the URL, not a title --}}
+                @if($video->video)
+                    <a href="{{ $video->video }}" class="video-btn" data-type="iframe">
+                        <i class="fi flaticon-play-1"></i>
+                    </a>
+                @endif
             </div>
         </div>
     </section>
+    @endif
     <!-- end wpo-choose-section -->
 
     <!-- start wpo-faq-section -->
@@ -324,68 +335,29 @@
                             <div class="row">
                                 <div class="col-lg-12 col-12">
                                     <div class="wpo-benefits-item">
-                                        <div class="accordion" id="accordionExample">
-                                            <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingOne">
-                                                    <button class="accordion-button fw-bold" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                                        aria-expanded="true" aria-controls="collapseOne">
-                                                        1. Tailored and Flexible Services
-                                                    </button>
-                                                </h3>
-                                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <p>Pay only for what you need—no bundled packages or unnecessary calls. Our adaptable approach ensures that you and your mentor can coordinate schedules effectively, accommodating time zone differences as many of our mentors are based internationally.</p>
+                                        @if($faqs->isNotEmpty())
+                                            <div class="accordion" id="accordionExample">
+                                                @foreach($faqs as $index => $faq)
+                                                    <div class="accordion-item">
+                                                        <h3 class="accordion-header" id="heading{{ $faq->id_faq }}">
+                                                            <button class="accordion-button fw-bold {{ $index > 0 ? 'collapsed' : '' }}" type="button"
+                                                                data-bs-toggle="collapse" data-bs-target="#collapse{{ $faq->id_faq }}"
+                                                                aria-expanded="{{ $index == 0 ? 'true' : 'false' }}" aria-controls="collapse{{ $faq->id_faq }}">
+                                                                {{ $faq->urutan ?? ($index + 1) }}. {{ $faq->title }}
+                                                            </button>
+                                                        </h3>
+                                                        <div id="collapse{{ $faq->id_faq }}" class="accordion-collapse collapse {{ $index == 0 ? 'show' : '' }}"
+                                                            aria-labelledby="heading{{ $faq->id_faq }}" data-bs-parent="#accordionExample">
+                                                            <div class="accordion-body">
+                                                                {!! $faq->description !!}
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                @endforeach
                                             </div>
-                                            <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingTwo">
-                                                    <button class="accordion-button fw-bold collapsed" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                                        aria-expanded="false" aria-controls="collapseTwo">
-                                                        2. Highly Qualified Mentors
-                                                    </button>
-                                                </h3>
-                                                <div id="collapseTwo" class="accordion-collapse collapse"
-                                                    aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <p>Our mentors come from prestigious universities worldwide and leading companies nationally and worldwide. They've been through the same journey you're on—feeling anxious, curious, and driven to achieve excellence.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingThree">
-                                                    <button class="accordion-button fw-bold collapsed" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                                        aria-expanded="false" aria-controls="collapseThree">
-                                                        3. Personalized One-on-One Sessions
-                                                    </button>
-                                                </h3>
-                                                <div id="collapseThree" class="accordion-collapse collapse"
-                                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <p>Each session is customized to focus on you, your story, and your specific needs. We recognize that everyone is at a different stage in their journey and provide support accordingly.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item">
-                                                <h3 class="accordion-header" id="headingFour">
-                                                    <button class="accordion-button fw-bold collapsed" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseFour"
-                                                        aria-expanded="false" aria-controls="collapseFour">
-                                                        4. Commitment to Excellence
-                                                    </button>
-                                                </h3>
-                                                <div id="collapseFour" class="accordion-collapse collapse"
-                                                    aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <p> We're dedicated to not only helping you secure your scholarship or Letter of Acceptance (LoA) but also ensuring your success beyond it. We guide you to discover your own "why" and strive for continuous growth and achievement.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @else
+                                            <p class="text-center">No FAQs found.</p>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -405,49 +377,39 @@
                 </div>
                 <div class="wpo-blog-items">
                     <div class="row">
-                        <div class="col col-lg-4 col-md-6 col-12">
-                            <div class="wpo-blog-item">
-                                <div class="wpo-blog-img">
-                                    <img src="assets/images/blog/1.jpg" alt="">
-                                </div>
-                                <div class="wpo-blog-content">
-                                    <ul>
-                                        14 April 2025
-                                    </ul>
-                                    <h2><a href="blog.html">Cari Beasiswa Kuliah ke AS? Pameran EducationUSA Akan Digelar di 3 Kota</a>
-                                    </h2>
-                                    <a href="blog-single.html" class="more">See More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col-lg-4 col-md-6 col-12">
-                            <div class="wpo-blog-item">
-                                <div class="wpo-blog-img">
-                                    <img src="assets/images/blog/2.jpg" alt="">
-                                </div>
-                                <div class="wpo-blog-content">
-                                    <ul>
-                                        14 April 2025
-                                    </ul>
-                                    <h2><a href="blog.html">Sutradara Film Jumbo Ryan Adriandhy, Jebolan Kampus di AS dan Jadi "Awardee" Fulbright</a></h2>
-                                    <a href="blog-single.html" class="more">See More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col-lg-4 col-md-6 col-12">
-                            <div class="wpo-blog-item">
-                                <div class="wpo-blog-img">
-                                    <img src="assets/images/blog/3.jpg" alt="">
-                                </div>
-                                <div class="wpo-blog-content">
-                                    <ul>
-                                        14 April 2025
-                                    </ul>
-                                    <h2><a href="blog.html">Pameran Pendidikan Australia 2023 Fasilitasi Pelajar Lanjut Kuliah di Sydney</a></h2>
-                                    <a href="blog-single.html" class="more">See More</a>
+                        @forelse ($articles as $article)
+                            <div class="col col-lg-4 col-md-6 col-12">
+                                <div class="wpo-blog-item">
+                                    <div class="wpo-blog-img">
+                                        @if($article->gambar)
+                                            <img src="{{ asset('storage/' . $article->gambar) }}" alt="{{ $article->title }}">
+                                        @else
+                                            <img src="{{ asset('assets/images/blog/1.jpg') }}" alt="Default Blog Image"> {{-- Default image --}}
+                                        @endif
+                                    </div>
+                                    <div class="wpo-blog-content">
+                                        <ul>
+                                            {{-- Format the date --}}
+                                            <li>{{ $article->created ? \Carbon\Carbon::parse($article->created)->format('d F Y') : 'Date N/A' }}</li>
+                                        </ul>
+                                        <h2>
+                                            @if($article->slug)
+                                                <a >{{ $article->title }}</a>
+                                            @else
+                                                {{ $article->title }}
+                                            @endif
+                                        </h2>
+                                        @if($article->slug)
+                                            <a  class="more">See More</a>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @empty
+                            <div class="col-12 text-center">
+                                <p>No recent blog posts found.</p>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
             </div> <!-- end container -->
