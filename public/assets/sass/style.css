@@ -799,7 +799,7 @@ img {
 }
 
 .wpo-page-title {
-  background: #b3f0ea;
+  background-image: url(../images/slider/background.png);
   min-height: 350px;
   position: relative;
   display: -webkit-box;

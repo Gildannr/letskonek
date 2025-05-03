@@ -27,7 +27,7 @@
                                 <img src="{{ asset('assets/images/ilustration/ilustration-letskonek-09.png') }}" alt="">
                             </div>
                             <div class="back-home">
-                                <a class="wpo-accountBtn" href="{{ asset('index.html') }}">
+                                <a class="wpo-accountBtn" href="{{ route('home') }}">
                                     <span class="">Back To Home</span>
                                 </a>
                             </div>
