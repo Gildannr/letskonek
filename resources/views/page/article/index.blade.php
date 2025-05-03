@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
-@section('title', 'Detail Blog')
+{{-- Use dynamic page title if provided (e.g., for category view) --}}
+@section('title', $pageTitle ?? 'Insights') 
 
 @section('content')
 
@@ -10,19 +11,25 @@
                 <div class="row">
                     <div class="col col-xs-12">
                         <div class="wpo-breadcumb-wrap">
-                            <h2>Latest News</h2>
+                            <h2>{{ $pageTitle ?? 'Latest News' }}</h2>
                             <ol class="wpo-breadcumb-wrap">
-                                <li><a href="index.html">Home</a></li>
-                                <li>Blog</li>
+                                <li><a href="{{ route('home') }}">Home</a></li>
+                                {{-- Add category breadcrumb if viewing by category --}}
+                                @if(isset($category))
+                                    <li><a href="{{ route('articles.index') }}">Insights</a></li>
+                                    <li>{{ $category->article_category_name }}</li>
+                                @else
+                                    <li>Insights</li>
+                                @endif
                             </ol>
                         </div>
                     </div>
                 </div> <!-- end row -->
             </div> <!-- end container -->
-            <div class="shape-1"><img src="assets/images/shape/1.svg" alt=""></div>
-            <div class="shape-2"><img src="assets/images/shape/2.svg" alt=""></div>
-            <div class="shape-3"><img src="assets/images/shape/3.svg" alt=""></div>
-            <div class="shape-4"><img src="assets/images/shape/4.svg" alt=""></div>
+            <div class="shape-1"><img src="{{ asset('assets/images/shape/1.svg') }}" alt=""></div>
+            <div class="shape-2"><img src="{{ asset('assets/images/shape/2.svg') }}" alt=""></div>
+            <div class="shape-3"><img src="{{ asset('assets/images/shape/3.svg') }}" alt=""></div>
+            <div class="shape-4"><img src="{{ asset('assets/images/shape/4.svg') }}" alt=""></div>
         </section>
         <!-- end page-title -->
 
@@ -32,213 +39,102 @@
                 <div class="row">
                     <div class="col col-lg-8">
                         <div class="wpo-blog-content">
-                            <div class="post format-standard-image">
-                                <div class="entry-media">
-                                    <img src="assets/images/blog/img-4.jpg" alt>
-                                </div>
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li><i class="fi flaticon-user"></i> By <a href="#">Jenny Watson</a> </li>
-                                        <li><i class="fi flaticon-comment-white-oval-bubble"></i> Comments 35 </li>
-                                        <li><i class="fi flaticon-calendar"></i> 24 Jun 2023</li>
-                                    </ul>
-                                </div>
-                                <div class="entry-details">
-                                    <h3><a href="blog-single.html">The Surprising Reason College Tuition Is Crazy Expensive</a></h3>
-                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
-                                        in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                                        It is a long established fact that a reader will be distracted by the readable
-                                         content of a page when looking at its layout.</p>
-                                    <a href="blog-single.html" class="read-more">READ MORE...</a>
-                                </div>
-                            </div>
-                            <div class="post format-standard">
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li><i class="fi flaticon-user"></i> By <a href="#">Jenny Watson</a> </li>
-                                        <li><i class="fi flaticon-comment-white-oval-bubble"></i> Comments 35 </li>
-                                        <li><i class="fi flaticon-calendar"></i> 24 Jun 2023</li>
-                                    </ul>
-                                </div>
-                                <div class="entry-details">
-                                    <h3><a href="blog-single.html">Become a great WordPress & PHP developer.</a>
-                                    </h3>
-                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
-                                        in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                                        It is a long established fact that a reader will be distracted by the readable
-                                         content of a page when looking at its layout.</p>
-                                    <a href="blog-single.html" class="read-more">READ MORE...</a>
-                                </div>
-                            </div>
-
-                            <div class="post format-gallery">
-                                <div class="entry-media">
-                                    <div class="post-slider owl-carousel">
-                                        <img src="assets/images/blog/img-5.jpg" alt>
-                                        <img src="assets/images/blog/img-4.jpg" alt>
+                            @forelse ($articles as $article)
+                                <div class="post format-standard-image"> {{-- Adjust format class based on article type if needed --}}
+                                    @if($article->gambar)
+                                        <div class="entry-media">
+                                            <img src="{{ asset('storage/' . $article->gambar) }}" alt="{{ $article->title }}">
+                                        </div>
+                                    @endif
+                                    <div class="entry-meta">
+                                        <ul>
+                                            {{-- Update meta info if available (e.g., Author relation) --}}
+                                            {{-- <li><i class="fi flaticon-user"></i> By <a href="#">{{ $article->author->name ?? 'Admin' }}</a> </li> --}}
+                                            {{-- <li><i class="fi flaticon-comment-white-oval-bubble"></i> Comments 35 </li> --}}
+                                            <li><i class="fi flaticon-calendar"></i> {{ $article->created ? \Carbon\Carbon::parse($article->created)->format('d M Y') : '' }}</li>
+                                        </ul>
                                     </div>
-
+                                    <div class="entry-details">
+                                        <h3><a href="{{ route('article.detail', $article->slug) }}">{{ $article->title }}</a></h3>
+                                        {{-- Display excerpt or limited content --}}
+                                        <p>{{ Str::limit(strip_tags($article->content), 200) }}</p> 
+                                        <a href="{{ route('article.detail', $article->slug) }}" class="read-more">READ MORE...</a>
+                                    </div>
                                 </div>
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li><i class="fi flaticon-user"></i> By <a href="#">Jenny Watson</a> </li>
-                                        <li><i class="fi flaticon-comment-white-oval-bubble"></i> Comments 35 </li>
-                                        <li><i class="fi flaticon-calendar"></i> 24 Jun 2023</li>
-                                    </ul>
-                                </div>
-                                <div class="entry-details">
-                                    <h3><a href="blog-single.html">A critical review of mobile learning integration</a></h3>
-                                   <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
-                                        in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                                        It is a long established fact that a reader will be distracted by the readable
-                                         content of a page when looking at its layout.</p>
-                                    <a href="blog-single.html" class="read-more">READ MORE...</a>
-                                </div>
-                            </div>
-                            <div class="post format-video">
-                                <div class="entry-media video-holder">
-                                    <img src="assets/images/blog/img-6.jpg" alt>
-                                    <a href="https://www.youtube.com/embed/r5sw-6lJmTA" class="video-btn"
-                                        data-type="iframe">
-                                    </a>
-                                </div>
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li><i class="fi flaticon-user"></i> By <a href="#">Jenny Watson</a> </li>
-                                        <li><i class="fi flaticon-comment-white-oval-bubble"></i> Comments 35 </li>
-                                        <li><i class="fi flaticon-calendar"></i> 24 Jun 2023</li>
-                                    </ul>
-                                </div>
-                                <div class="entry-details">
-                                    <h3><a href="blog-single.html">Become a great WordPress & PHP developer.</a>
-                                    </h3>
-                                   <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
-                                        in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                                        It is a long established fact that a reader will be distracted by the readable
-                                         content of a page when looking at its layout.</p>
-                                    <a href="blog-single.html" class="read-more">READ MORE...</a>
-                                </div>
-                            </div>
+                            @empty
+                                <div class="alert alert-info">No articles found.</div>
+                            @endforelse
+                            
+                            {{-- Pagination --}}
                             <div class="pagination-wrapper pagination-wrapper-left">
-                                <ul class="pg-pagination">
-                                    <li>
-                                        <a href="#" aria-label="Previous">
-                                            <i class="fi ti-angle-left"></i>
-                                        </a>
-                                    </li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li>
-                                        <a href="#" aria-label="Next">
-                                            <i class="fi ti-angle-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+                                {{ $articles->links('vendor.pagination.custom') }} 
                             </div>
                         </div>
                     </div>
                     <div class="col col-lg-4">
                         <div class="blog-sidebar">
-                            <div class="widget about-widget">
-                                <div class="img-holder">
-                                    <img src="assets/images/blog/about-widget.jpg" alt>
-                                </div>
-                                <h4>Jenny Alexandra</h4>
-                                <p>Hi! beautiful people. I`m an authtor of this blog. Read our post - stay with us</p>
-                                <div class="social">
-                                    <ul class="clearfix">
-                                        <li><a href="#"><i class="fi flaticon-facebook-app-symbol"></i></a></li>
-                                        <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                        <li><a href="#"><i class="fi flaticon-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="ti-pinterest"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="widget search-widget">
+                            {{-- Removed static About Widget --}}
+                            
+                            {{-- Search Widget (can be implemented later) --}}
+                            {{-- <div class="widget search-widget">
                                 <form>
                                     <div>
                                         <input type="text" class="form-control" placeholder="Search Post..">
                                         <button type="submit"><i class="ti-search"></i></button>
                                     </div>
                                 </form>
-                            </div>
-                            <div class="widget category-widget">
-                                <h3>Categories</h3>
-                                <ul>
-                                    <li><a href="course-single.html">Education<span>5</span></a></li>
-                                    <li><a href="course-single.html">Ai Content <span>7</span></a></li>
-                                    <li><a href="course-single.html">Knowledge<span>3</span></a></li>
-                                    <li><a href="course-single.html">Marketing<span>6</span></a></li>
-                                    <li><a href="course-single.html">Design<span>2</span></a></li>
-                                    <li><a href="course-single.html">Courses<span>8</span></a></li>
-                                </ul>
-                            </div>
-                            <div class="widget recent-post-widget">
-                                <h3>Related Posts</h3>
-                                <div class="posts">
-                                    <div class="post">
-                                        <div class="img-holder">
-                                            <img src="assets/images/recent-posts/img-1.jpg" alt>
-                                        </div>
-                                        <div class="details">
-                                            <h4><a href="blog-single.html">The Surprising Reason College Tuition Is Crazy Expensive</a>
-                                            </h4>
-                                            <span class="date">19 Jun 2023 </span>
-                                        </div>
-                                    </div>
-                                    <div class="post">
-                                        <div class="img-holder">
-                                            <img src="assets/images/recent-posts/img-2.jpg" alt>
-                                        </div>
-                                        <div class="details">
-                                            <h4><a href="blog-single.html">A critical review of mobile learning integration</a></h4>
-                                            <span class="date">22 May 2023 </span>
-                                        </div>
-                                    </div>
-                                    <div class="post">
-                                        <div class="img-holder">
-                                            <img src="assets/images/recent-posts/img-3.jpg" alt>
-                                        </div>
-                                        <div class="details">
-                                            <h4><a href="blog-single.html">Hampden-Sydney College in Virginia</a></h4>
-                                            <span class="date">12 Apr 2023 </span>
-                                        </div>
+                            </div> --}}
+                            
+                            {{-- Category Widget --}}
+                            @if($categories->isNotEmpty())
+                                <div class="widget category-widget">
+                                    <h3>Categories</h3>
+                                    <ul>
+                                        @foreach ($categories as $cat)
+                                            <li><a href="{{ route('articles.category', $cat->slug) }}">{{ $cat->article_category_name }}<span>{{ $cat->articles_count }}</span></a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
+                            {{-- Removed Recent Posts Widget --}}
+                            {{-- 
+                            @if($recentPosts->isNotEmpty())
+                                <div class="widget recent-post-widget">
+                                    <h3>Recent Posts</h3>
+                                    <div class="posts">
+                                        @foreach($recentPosts as $post)
+                                            <div class="post">
+                                                @if($post->gambar)
+                                                    <div class="img-holder">
+                                                        <img src="{{ asset('storage/' . $post->gambar) }}" alt="{{ $post->title }}">
+                                                    </div>
+                                                @endif
+                                                <div class="details">
+                                                    <h4><a href="{{ route('article.detail', $post->slug) }}">{{ $post->title }}</a>
+                                                    </h4>
+                                                    <span class="date">{{ $post->created ? \Carbon\Carbon::parse($post->created)->format('d M Y') : '' }}</span>
+                                                </div>
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
-                            </div>
-                            <div class="widget wpo-instagram-widget">
-                                <div class="widget-title">
-                                    <h3>Instagram</h3>
+                            @endif
+                            --}}
+
+                            {{-- Removed static Instagram Widget --}}
+                            
+                            {{-- Tag Widget (can be implemented later) --}}
+                            {{-- @if(!empty($tags))
+                                <div class="widget tag-widget">
+                                    <h3>Tags</h3>
+                                    <ul>
+                                        @foreach ($tags as $tag)
+                                            <li><a href="#">{{ $tag }}</a></li>
+                                        @endforeach
+                                    </ul>
                                 </div>
-                                <ul class="d-flex">
-                                    <li><a href="course-single.html"><img src="assets/images/instragram/1.jpg"
-                                                alt=""></a></li>
-                                    <li><a href="course-single.html"><img src="assets/images/instragram/2.jpg"
-                                                alt=""></a></li>
-                                    <li><a href="course-single.html"><img src="assets/images/instragram/3.jpg"
-                                                alt=""></a></li>
-                                    <li><a href="course-single.html"><img src="assets/images/instragram/4.jpg"
-                                                alt=""></a></li>
-                                    <li><a href="course-single.html"><img src="assets/images/instragram/5.jpg"
-                                                alt=""></a></li>
-                                    <li><a href="course-single.html"><img src="assets/images/instragram/6.jpg"
-                                                alt=""></a></li>
-                                </ul>
-                            </div>
-                            <div class="widget tag-widget">
-                                <h3>Tags</h3>
-                                <ul>
-                                    <li><a href="#">Education</a></li>
-                                    <li><a href="#">Marketing</a></li>
-                                    <li><a href="#">Video</a></li>
-                                    <li><a href="#">Knowledge</a></li>
-                                    <li><a href="#">Design</a></li>
-                                    <li><a href="#">SOCIAL</a></li>
-                                    <li><a href="#">SECURITY</a></li>
-                                    <li><a href="#">Web Design</a></li>
-                                </ul>
-                            </div>
+                            @endif --}}
                         </div>
                     </div>
                 </div>
@@ -248,6 +144,7 @@
 
 
         <!-- start wpo-subscribe-section -->
+        {{-- Keeping subscribe section static for now --}}
         <section class="wpo-subscribe-section section-padding pt-0">
             <div class="container">
                 <div class="wpo-subscribe-wrap">

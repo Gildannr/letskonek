@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MentorsController;
 use App\Http\Controllers\KonekController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ArticleController;
 // use App\Http\Middleware\isLogin;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +24,10 @@ Route::get('/service/{category_slug}/{product_slug}', [ProductController::class,
 Route::get('/mentors', [MentorsController::class, 'index'])->name('mentors');
 Route::get('/mentor/{slug}', [MentorsController::class, 'detail'])->name('mentor.detail');
 Route::get('/konek', [KonekController::class, 'index'])->name('konek');
-Route::get('/blog-detail', [BlogController::class, 'index'])->name('blog-detail');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/blog/category/{slug}', [ArticleController::class, 'category'])->name('articles.category');
+Route::get('/blog/{slug}', [ArticleController::class, 'show'])->name('article.detail');
+
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');

@@ -6,7 +6,7 @@ use App\Models\Article;
 use App\Models\ArticleCategory;
 use Illuminate\Http\Request;
 
-class BlogController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the articles.
