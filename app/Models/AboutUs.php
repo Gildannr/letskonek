@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CMSAbout extends Model
+class AboutUs extends Model
 {
     protected $table = 'tabel_about_us';
     protected $primaryKey = 'id_about_us';
@@ -27,4 +27,4 @@ class CMSAbout extends Model
         'updater',
         'status'
     ];
-}
+} 

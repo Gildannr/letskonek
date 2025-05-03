@@ -12,4 +12,20 @@ class ProductCategoryRegisAnswer extends Model
 
     // Jika tabel Anda tidak menggunakan kolom created_at dan updated_at
     public $timestamps = false;
+    
+    // Fields: id, product_category_regis_id, answer, created, author, updated, updater, status
+    protected $fillable = [
+        'product_category_regis_id',
+        'answer',
+        'created',
+        'author',
+        'updated',
+        'updater',
+        'status'
+    ];
+    
+    public function question()
+    {
+        return $this->belongsTo(ProductCategoryRegis::class, 'product_category_regis_id', 'id');
+    }
 }

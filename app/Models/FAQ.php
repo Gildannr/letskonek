@@ -4,21 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CMSHome extends Model
+class FAQ extends Model
 {
-    protected $table = 'tabel_setup_home';
-    protected $primaryKey = 'id_setup_home';
-    protected $guarded = ['id_setup_home'];
+    protected $table = 'tabel_faq';
+    protected $primaryKey = 'id_faq';
+    protected $guarded = ['id_faq'];
 
     // Jika tabel Anda tidak menggunakan kolom created_at dan updated_at
     public $timestamps = false;
     
-    // Fields: id_setup_home, title, sub_title, description, gambar, urutan, created, author, updated, updater, status
+    // Fields: id_faq, title, description, urutan, created, author, updated, updater, status
     protected $fillable = [
         'title',
-        'sub_title',
         'description',
-        'gambar',
         'urutan',
         'created',
         'author',
@@ -26,4 +24,4 @@ class CMSHome extends Model
         'updater',
         'status'
     ];
-}
+} 

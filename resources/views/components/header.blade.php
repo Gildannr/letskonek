@@ -15,7 +15,7 @@
                             </div>
                             <div class="col-lg-3 col-md-4 col-6">
                                 <div class="navbar-header">
-                                    <a class="navbar-brand" href="index.php"><img src="{{asset('assets/images/logo/logo.png')}}" alt="logo"></a>
+                                    <a class="navbar-brand" href="{{ route('home') }}"><img src="{{asset('assets/images/logo/logo.png')}}" alt="logo"></a>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-1 col-1">
@@ -27,33 +27,37 @@
                                         <li class="menu-item-has-children">
                                             <a style="cursor: pointer;">Services</a>
                                             <ul class="sub-menu">
+                                                @php
+                                                    $categories = \App\Models\ProductCategory::where('status', '2')->get();
+                                                @endphp
+                                                @foreach($categories as $category)
                                                 <li>
-                                                    <a href="konek.php">Konek Coffe Chat</a>
-                                                </li>
-                                                <li class="menu-item-has-children">
-                                                    <a style="cursor: pointer;">Konek Mentorship</a>
+                                                    <a href="{{ route('product.by-category', $category->product_category_id) }}">Konek {{ $category->product_category }}</a>
+                                                    @php
+                                                        $products = \App\Models\Product::where('product_category_id', $category->product_category_id)
+                                                                    ->where('status', '2')
+                                                                    ->get();
+                                                    @endphp
+                                                    @if($products->count() > 0)
                                                     <ul class="sub-menu">
-                                                        <li><a href="konek.php">Mentorship for Master's Abroad</a></li>
-                                                        <li><a href="konek.php">Mentoring for Scholarship Programs</a></li>
+                                                        @foreach($products as $product)
+                                                        <li><a href="{{ route('product.detail', $product->product_id) }}">{{ $product->product_name }}</a></li>
+                                                        @endforeach
                                                     </ul>
+                                                    @endif
                                                 </li>
-                                                <li>
-                                                    <a href="konek.php">Konek Mock Interviews</a>
-                                                </li>
-                                                <li>
-                                                    <a href="konek.php">Konek Events</a>
-                                                </li>
+                                                @endforeach
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a href="#">Mentors</a>
                                             <ul class="sub-menu">
-                                                <li><a href="mentors.php">Meet Our Mentors</a></li>
-                                                <li><a href="#">Application for Mentors</a></li>
+                                                <li><a href="">Meet Our Mentors</a></li>
+                                                <li><a href="">Application for Mentors</a></li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="#">Insights</a>
+                                            <a href="">Insights</a>
                                         </li>
                                     </ul>
                                 </div>

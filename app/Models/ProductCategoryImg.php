@@ -4,20 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProductCategoryRegis extends Model
+class ProductCategoryImg extends Model
 {
-    protected $table = 'trs_product_category_regis';
-    protected $primaryKey = 'id';
-    protected $guarded = ['id'];
+    protected $table = 'trs_product_category_img';
+    protected $primaryKey = 'product_category_img_id';
+    protected $guarded = ['product_category_img_id'];
 
     // Jika tabel Anda tidak menggunakan kolom created_at dan updated_at
     public $timestamps = false;
     
-    // Fields: id, product_category_id, question, description, created, author, updated, updater, status
+    // Fields: product_category_img_id, product_category_id, product_img, thumbail, created, author, updated, updater, status
     protected $fillable = [
         'product_category_id',
-        'question',
-        'description',
+        'product_img',
+        'thumbail',
         'created',
         'author',
         'updated',
@@ -29,9 +29,4 @@ class ProductCategoryRegis extends Model
     {
         return $this->belongsTo(ProductCategory::class, 'product_category_id', 'product_category_id');
     }
-    
-    public function answers()
-    {
-        return $this->hasMany(ProductCategoryRegisAnswer::class, 'product_category_regis_id', 'id');
-    }
-}
+} 

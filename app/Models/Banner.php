@@ -4,27 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CMSAbout extends Model
+class Banner extends Model
 {
-    protected $table = 'tabel_about_us';
-    protected $primaryKey = 'id_about_us';
-    protected $guarded = ['id_about_us'];
+    protected $table = 'tabel_banner';
+    protected $primaryKey = 'id_banner';
+    protected $guarded = ['id_banner'];
 
     // Jika tabel Anda tidak menggunakan kolom created_at dan updated_at
     public $timestamps = false;
     
-    // Fields: id_about_us, title, sub_title, description, slug, gambar, banner, created, author, updated, updater, status
+    // Fields: id_banner, title, description, link, gambar, gambar_mobile, created, author, updated, updater, status
     protected $fillable = [
         'title',
-        'sub_title',
         'description',
-        'slug',
+        'link',
         'gambar',
-        'banner',
+        'gambar_mobile',
         'created',
         'author',
         'updated',
         'updater',
         'status'
     ];
-}
+} 
