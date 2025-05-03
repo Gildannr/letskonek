@@ -394,13 +394,13 @@
                                         </ul>
                                         <h2>
                                             @if($article->slug)
-                                                <a >{{ $article->title }}</a>
+                                                <a href="{{route ('blog-detail')}}">{{ $article->title }}</a>
                                             @else
                                                 {{ $article->title }}
                                             @endif
                                         </h2>
                                         @if($article->slug)
-                                            <a  class="more">See More</a>
+                                            <a href="{{route ('blog-detail')}}"  class="more">See More</a>
                                         @endif
                                     </div>
                                 </div>
