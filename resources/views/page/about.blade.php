@@ -132,7 +132,7 @@
                 <small>Our Professionals</small>
                 <h2>Meet our
                     <span>
-                        Teams
+                        Team {{-- Or Teachers if preferred --}}
                         <i class="shape">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 206 53" fill="none">
                                 <path
@@ -165,9 +165,8 @@
                                     </div>
                                 </div>
                                 <div class="wpo-team-text">
-                                    {{-- Use Team model fields and link to mentor detail route --}}
+                                    {{-- Link to TEAM detail route --}}
                                     @if($team->slug)
-                                        {{-- Linking to mentor.detail but passing team slug --}}
                                         <h2><a href="{{ route('team.detail', $team->slug) }}">{{ $team->title }}</a></h2>
                                     @else
                                         <h2>{{ $team->title }}</h2>

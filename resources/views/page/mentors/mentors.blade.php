@@ -45,15 +45,15 @@
                 </div>
                 <div class="wpo-team-wrap">
                     <div class="row">
-                        @forelse ($teams as $team)
+                        @forelse ($mentors as $mentor)
                             <div class="col col-lg-3 col-md-6 col-12">
                                 <div class="wpo-team-item">
                                     <div class="wpo-team-img">
                                         <div class="wpo-team-img-box">
-                                            @if($team->gambar)
-                                                <img src="{{ asset('storage/' . $team->gambar) }}" alt="{{ $team->title }}">
+                                            @if($mentor->gambar)
+                                                <img src="{{ asset('storage/' . $mentor->gambar) }}" alt="{{ $mentor->title }}">
                                             @else
-                                                <img src="{{ asset('assets/images/team/1.jpg') }}" alt="{{ $team->title }}"> {{-- Default image --}}
+                                                <img src="{{ asset('assets/images/team/1.jpg') }}" alt="{{ $mentor->title }}"> {{-- Default image --}}
                                             @endif
                                             {{-- Social links can be added later if needed --}}
                                             {{-- <ul>
@@ -64,12 +64,12 @@
                                         </div>
                                     </div>
                                     <div class="wpo-team-text">
-                                        @if($team->slug)
-                                            <h2><a href="{{ route('team.detail', $team->slug) }}">{{ $team->title }}</a></h2>
+                                        @if($mentor->slug)
+                                            <h2><a href="{{ route('team.detail', $mentor->slug) }}">{{ $mentor->title }}</a></h2>
                                         @else
-                                            <h2>{{ $team->title }}</h2>
+                                            <h2>{{ $mentor->title }}</h2>
                                         @endif
-                                        <span>{{ $team->sub_title ?? '' }}</span>
+                                        <span>{{ $mentor->sub_title ?? '' }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
                         @endforelse
                     </div>
                     <div class="pagination-wrapper pagination-wrapper-center mt-5">
-                        {{ $teams->links('vendor.pagination.custom') }}
+                        {{ $mentors->links('vendor.pagination.custom') }}
                     </div>
                 </div>
             </div> <!-- end container -->
