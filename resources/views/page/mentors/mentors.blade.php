@@ -10,10 +10,10 @@
                 <div class="row">
                     <div class="col col-xs-12">
                         <div class="wpo-breadcumb-wrap">
-                            <h2>Meet Our Teachers</h2>
+                            <h2>Meet Our Mentors</h2>
                             <ol class="wpo-breadcumb-wrap">
                                 <li><a href="{{ route('home') }}">Home</a></li>
-                                <li>Our Teachers</li>
+                                <li>Our Mentors</li>
                             </ol>
                         </div>
                     </div>
