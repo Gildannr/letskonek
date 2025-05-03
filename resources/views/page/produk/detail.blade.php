@@ -303,37 +303,28 @@
                     <div class="modal-body">
                         <p>Answer the following questions before placing your order:</p>
                         <input type="hidden" value="{{ $getProduct->product_id }}" name="product_id">
-                        <input type="hidden" value="" id="quantity" name="quantity">
+                        <input type="hidden" value="1" id="quantity" name="quantity">
 
-                        <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                                const productCount = document.getElementById('product-count');
-                                const quantityHidden = document.getElementById('quantity');
-
-                                // Set initial value
-                                quantityHidden.value = productCount.value;
-
-                                // Update hidden field when product-count changes
-                                productCount.addEventListener('change', function() {
-                                    quantityHidden.value = this.value;
-                                });
-                            });
-                        </script>
-
-                        {{-- Looping questions --}}
-                        @foreach ($questionsByCategory as $question)
-                            <div class="mb-3">
-                                <label class="form-label">{{ $question->question }}</label>
-                                <div>
-                                    <input type="radio" name="answers[{{ $question->id }}]" value="Yes"
-                                        id="question_{{ $question->id }}">
-                                    <label for="question_{{ $question->id }}">Yes</label>
-                                    <input type="radio" name="answers[{{ $question->id }}]" value="No"
-                                        id="question_{{ $question->id }}_no">
-                                    <label for="question_{{ $question->id }}_no">No</label>
+                        {{-- Debug information --}}
+                        @if(isset($questionsByCategory) && $questionsByCategory->count() > 0)
+                            {{-- Looping questions --}}
+                            @foreach ($questionsByCategory as $question)
+                                <div class="mb-3">
+                                    <label class="form-label">{{ $question->question }}</label>
+                                    <div>
+                                        <input type="radio" name="answers[{{ $question->id }}]" value="Yes"
+                                            id="question_{{ $question->id }}_yes" required>
+                                        <label for="question_{{ $question->id }}_yes">Yes</label>
+                                        &nbsp;&nbsp;
+                                        <input type="radio" name="answers[{{ $question->id }}]" value="No"
+                                            id="question_{{ $question->id }}_no" required>
+                                        <label for="question_{{ $question->id }}_no">No</label>
+                                    </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        @else
+                            <div class="alert alert-info">No questions available for this product category.</div>
+                        @endif
 
                         <input type="hidden" id="product_id" name="product_id" value="{{ $getProduct->product_id }}">
                     </div>
@@ -350,11 +341,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Handle "Order Now" button click
             document.getElementById('btnOrderNow').addEventListener('click', function() {
-                // Ambil jumlah produk dari input
-                // const quantity = document.getElementById('product-count').value;
-
-                // Tampilkan modal
-                $('#orderModal').modal('show');
+                // Show the modal
+                var orderModal = new bootstrap.Modal(document.getElementById('orderModal'));
+                orderModal.show();
             });
         });
     </script>

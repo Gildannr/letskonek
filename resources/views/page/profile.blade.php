@@ -35,22 +35,22 @@
                             <div class="mb-3">
                                 <label class="form-label">Full Name</label>
                                 <input type="text" class="form-control" name="fullname"
-                                    value="{{ $mergedData['users']->fullname }}">
+                                    value="{{ $mergedData['users']->fullname ?? old('fullname', '') }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
                                 <input type="email" class="form-control" name="email"
-                                    value="{{ $mergedData['users']->email }}">
+                                    value="{{ $mergedData['users']->email ?? old('email', '') }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">No. WA</label>
                                 <input type="text" class="form-control" name="phone"
-                                    value="{{ $mergedData['users']->phone }}">
+                                    value="{{ $mergedData['users']->phone ?? old('phone', '') }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Joined Date</label>
                                 <input type="text" class="form-control"
-                                    value="{{ date('Y-m-d', strtotime(auth()->user()->created)) }}" readonly>
+                                    value="{{ date('Y-m-d', strtotime(auth()->user()->created ?? now())) }}" readonly>
                             </div>
                             <div class="d-flex gap-2">
                                 <button type="submit" class="btn btn-primary">Update Profile</button>

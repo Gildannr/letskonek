@@ -13,8 +13,23 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $pwUsers = PwUser::find(Auth::user()->id);
-        $users = User::find(Auth::user()->id);
+        $userId = Auth::user()->id;
+        $pwUsers = PwUser::find($userId);
+        
+        // Ensure we get the correct user - check if there's a username match
+        $users = User::where('email', Auth::user()->username)
+            ->orWhere('author', Auth::user()->username)
+            ->first();
+            
+        // If user still not found, provide an empty model with default values
+        if (!$users) {
+            $users = new User([
+                'fullname' => $pwUsers->nama_lengkap ?? Auth::user()->username,
+                'email' => Auth::user()->username . '@example.com',
+                'phone' => '',
+            ]);
+        }
+        
         $mergedData = [
             'pwUsers' => $pwUsers,
             'users' => $users
