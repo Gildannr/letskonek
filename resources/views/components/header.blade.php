@@ -57,7 +57,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#">Insights</a>
+                                    <a href="/blog">Blog</a>
                                 </li>
                             </ul>
                         </div>

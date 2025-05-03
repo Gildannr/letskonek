@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 {{-- Use dynamic page title if provided (e.g., for category view) --}}
-@section('title', $pageTitle ?? 'Insights') 
+@section('title', $pageTitle ?? 'Blog') 
 
 @section('content')
 
@@ -16,10 +16,10 @@
                                 <li><a href="{{ route('home') }}">Home</a></li>
                                 {{-- Add category breadcrumb if viewing by category --}}
                                 @if(isset($category))
-                                    <li><a href="{{ route('articles.index') }}">Insights</a></li>
+                                    <li><a href="{{ route('blog.index') }}">Blog</a></li>
                                     <li>{{ $category->article_category_name }}</li>
                                 @else
-                                    <li>Insights</li>
+                                    <li>Blog</li>
                                 @endif
                             </ol>
                         </div>
@@ -55,10 +55,10 @@
                                         </ul>
                                     </div>
                                     <div class="entry-details">
-                                        <h3><a href="{{ route('article.detail', $article->slug) }}">{{ $article->title }}</a></h3>
+                                        <h3><a href="{{ route('blog.detail', $article->slug) }}">{{ $article->title }}</a></h3>
                                         {{-- Display excerpt or limited content --}}
                                         <p>{{ Str::limit(strip_tags($article->content), 200) }}</p> 
-                                        <a href="{{ route('article.detail', $article->slug) }}" class="read-more">READ MORE...</a>
+                                        <a href="{{ route('blog.detail', $article->slug) }}" class="read-more">READ MORE...</a>
                                     </div>
                                 </div>
                             @empty
@@ -91,14 +91,13 @@
                                     <h3>Categories</h3>
                                     <ul>
                                         @foreach ($categories as $cat)
-                                            <li><a href="{{ route('articles.category', $cat->slug) }}">{{ $cat->article_category_name }}<span>{{ $cat->articles_count }}</span></a></li>
+                                            <li><a href="{{ route('blog.category', $cat->slug) }}">{{ $cat->article_category_name }}<span>{{ $cat->articles_count }}</span></a></li>
                                         @endforeach
                                     </ul>
                                 </div>
                             @endif
 
                             {{-- Removed Recent Posts Widget --}}
-                            {{-- 
                             @if($recentPosts->isNotEmpty())
                                 <div class="widget recent-post-widget">
                                     <h3>Recent Posts</h3>
@@ -111,7 +110,7 @@
                                                     </div>
                                                 @endif
                                                 <div class="details">
-                                                    <h4><a href="{{ route('article.detail', $post->slug) }}">{{ $post->title }}</a>
+                                                    <h4><a href="{{ route('blog.detail', $post->slug) }}">{{ $post->title }}</a>
                                                     </h4>
                                                     <span class="date">{{ $post->created ? \Carbon\Carbon::parse($post->created)->format('d M Y') : '' }}</span>
                                                 </div>
@@ -120,7 +119,6 @@
                                     </div>
                                 </div>
                             @endif
-                            --}}
 
                             {{-- Removed static Instagram Widget --}}
                             
