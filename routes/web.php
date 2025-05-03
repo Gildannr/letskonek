@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MentorsController;
 use App\Http\Controllers\KonekController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\TeamController;
 // use App\Http\Middleware\isLogin;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,8 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/category/{slug}', [BlogController::class, 'category'])->name('blog.category');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.detail');
 
+// Team Routes
+Route::get('/team/{slug}', [TeamController::class, 'show'])->name('team.detail');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');

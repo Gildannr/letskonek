@@ -168,7 +168,7 @@
                                     {{-- Use Team model fields and link to mentor detail route --}}
                                     @if($team->slug)
                                         {{-- Linking to mentor.detail but passing team slug --}}
-                                        <h2><a href="{{ route('mentor.detail', $team->slug) }}">{{ $team->title }}</a></h2>
+                                        <h2><a href="{{ route('team.detail', $team->slug) }}">{{ $team->title }}</a></h2>
                                     @else
                                         <h2>{{ $team->title }}</h2>
                                     @endif

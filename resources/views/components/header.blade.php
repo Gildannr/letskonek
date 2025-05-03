@@ -50,7 +50,7 @@
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="#">Mentors</a>
+                                    <a href="/mentors">Mentors</a>
                                     <ul class="sub-menu">
                                         <li><a href="{{ route('mentors') }}">Meet Our Mentors</a></li>
                                         <li><a href="#">Application for Mentors</a></li>

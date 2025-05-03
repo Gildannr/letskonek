@@ -10,10 +10,10 @@
                 <div class="row">
                     <div class="col col-xs-12">
                         <div class="wpo-breadcumb-wrap">
-                            <h2>Meet Our Mentors</h2>
+                            <h2>Meet Our Team</h2>
                             <ol class="wpo-breadcumb-wrap">
                                 <li><a href="{{ route('home') }}">Home</a></li>
-                                <li>Our Mentors</li>
+                                <li>Our Team</li>
                             </ol>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                     <small>Our Professionals</small>
                     <h2>Meet our
                         <span>
-                            Teachers
+                            Team
                             <i class="shape">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 206 53" fill="none">
                                     <path
@@ -56,18 +56,16 @@
                                                 <img src="{{ asset('assets/images/team/1.jpg') }}" alt="{{ $team->title }}"> {{-- Default image --}}
                                             @endif
                                             {{-- Social links can be added later if needed --}}
-                                            {{-- 
-                                            <ul>
+                                            {{-- <ul>
                                                 <li><a href="#"><i class="fi flaticon-facebook-app-symbol"></i></a></li>
                                                 <li><a href="#"><i class="fi flaticon-twitter"></i></a></li>
                                                 <li><a href="#"><i class="fi flaticon-linkedin"></i></a></li>
-                                            </ul> 
-                                            --}}
+                                            </ul> --}}
                                         </div>
                                     </div>
                                     <div class="wpo-team-text">
                                         @if($team->slug)
-                                            <h2><a href="{{ route('mentor.detail', $team->slug) }}">{{ $team->title }}</a></h2>
+                                            <h2><a href="{{ route('team.detail', $team->slug) }}">{{ $team->title }}</a></h2>
                                         @else
                                             <h2>{{ $team->title }}</h2>
                                         @endif
