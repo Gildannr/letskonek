@@ -13,7 +13,7 @@ class HomeController extends Controller
         $cmsHome = CMSHome::orderBy('urutan', 'asc')->get();
 
         // dd($cmsHome);
-        $getProductCategories = ProductCategory::select(["product_category_id", "product_category"])->get(3);
+        $getProductCategories = ProductCategory::select(["product_category_id", "product_category", "slug"])->get(3);
         return view('page.home', compact('getProductCategories', 'cmsHome'));
     }
 }

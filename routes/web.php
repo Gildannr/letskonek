@@ -7,16 +7,20 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MentorsController;
+use App\Http\Controllers\KonekController;
 // use App\Http\Middleware\isLogin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
-Route::get('/product-by-category/{id_category}',[ProductController::class, 'index'])->name('product.by-category');
-Route::get('/product-detail/{id_product}',[ProductController::class, 'detail'])->name('product.detail');
-Route::get('/detail-produk', function () {
-    return view('page.produk.detail');
-});
+
+// Product routes with slugs
+Route::get('/service/{category_slug}', [ProductController::class, 'index'])->name('product.by-category');
+Route::get('/service/{category_slug}/{product_slug}', [ProductController::class, 'detail'])->name('product.detail');
+
+Route::get('/mentors', [MentorsController::class, 'index'])->name('mentors');
+Route::get('/konek', [KonekController::class, 'index'])->name('konek');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');

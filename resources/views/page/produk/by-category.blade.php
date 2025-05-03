@@ -11,7 +11,7 @@
                     <div class="wpo-breadcumb-wrap">
                         <h2>{{ $getProductCategory->product_category }}</h2>
                         <ol class="wpo-breadcumb-wrap">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="{{ route('home') }}">Home</a></li>
                             <li>{{ $getProductCategory->product_category }}</li>
                         </ol>
                     </div>
@@ -35,14 +35,18 @@
                             @foreach ($getProducts as $product)
                                 <div class="grid">
                                     <div class="img-holder">
-                                        <img src="{{ asset('assets/images/shop/1.jpg') }}" alt>
+                                        @if($product->image)
+                                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->product_name }}">
+                                        @else
+                                            <img src="{{ asset('assets/images/shop/1.jpg') }}" alt="{{ $product->product_name }}">
+                                        @endif
                                     </div>
                                     <div class="details">
-                                        <h3><a href="{{ route('product.detail', $product->product_id) }}">
+                                        <h3><a href="{{ route('product.detail', ['category_slug' => $getProductCategory->slug, 'product_slug' => $product->slug]) }}">
                                                 {{ $product->product_name }}</a></h3>
                                         <span>Rp {{ number_format($product->price, 0, ',', '.') }}</span>
                                         <div class="add-to-cart">
-                                            <a href="{{ route('product.detail', $product->product_id) }}">Order Now <i class="ti-shopping-cart"></i></a>
+                                            <a href="{{ route('product.detail', ['category_slug' => $getProductCategory->slug, 'product_slug' => $product->slug]) }}">Order Now <i class="ti-shopping-cart"></i></a>
                                         </div>
                                     </div>
                                 </div>

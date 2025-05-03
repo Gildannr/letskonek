@@ -32,6 +32,7 @@
     <!-- start page-wrapper -->
     <div class="page-wrapper">
         <!-- start preloader -->
+        <!--
         <div class="preloader">
             <div class="vertical-centered-box">
                 <div class="content">
@@ -43,6 +44,7 @@
                 </div>
             </div>
         </div>
+        -->
         <!-- end preloader -->
 
         @include('components.header')

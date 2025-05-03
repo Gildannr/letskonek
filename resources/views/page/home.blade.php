@@ -50,9 +50,9 @@
                                     <h2>Welcome to KONEK!
                                     </h2>
                                 </div>
-                                <p>In today’s era, where AI and robots provide vast amounts of data and automation, the significance of real human connections becomes even more crucial. At KONEK, we believe that personal interactions are indispensable for advancing your career and education. While technology offers tools and information, it’s the human touch that adds relevance and context, providing invaluable insights from real-life experiences.
+                                <p>In today's era, where AI and robots provide vast amounts of data and automation, the significance of real human connections becomes even more crucial. At KONEK, we believe that personal interactions are indispensable for advancing your career and education. While technology offers tools and information, it's the human touch that adds relevance and context, providing invaluable insights from real-life experiences.
                                 </p>
-                                <p>At KONEK, we bridge the gap between technology and human interaction by connecting you with the relevant people who can offer the support and insights you need. We’re dedicated to helping you thrive by leveraging the power of real human connections. 
+                                <p>At KONEK, we bridge the gap between technology and human interaction by connecting you with the relevant people who can offer the support and insights you need. We're dedicated to helping you thrive by leveraging the power of real human connections. 
                                 </p>
                                 <a href="about.html" class="theme-btn-s2">More About Us</a>
                             </div>
@@ -171,7 +171,11 @@
                             <div class="wpo-popular-single">
                                 <div class="wpo-popular-item">
                                     <div class="wpo-popular-img">
-                                        <img src="assets/images/popular/img-1.jpg" alt="">
+                                        @if($category->image)
+                                            <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->product_category }}">
+                                        @else
+                                            <img src="assets/images/popular/img-1.jpg" alt="{{ $category->product_category }}">
+                                        @endif
                                         {{-- <div class="thumb">
                                     <span>$80</span>
                                 </div> --}}
@@ -180,7 +184,7 @@
                                         <div style="display: flex; justify-content: center;" class="wpo-popular-text-top">
                                             <ul>
                                                 <li><a style="text-align: center;"
-                                                        href="{{ route('product.by-category', $category->product_category_id) }}">{{ $category->product_category }}</a>
+                                                        href="{{ route('product.by-category', $category->slug) }}">{{ $category->product_category }}</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -347,7 +351,7 @@
                                                 <div id="collapseTwo" class="accordion-collapse collapse"
                                                     aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p>Our mentors come from prestigious universities worldwide and leading companies nationally and worldwide. They’ve been through the same journey you’re on—feeling anxious, curious, and driven to achieve excellence.</p>
+                                                        <p>Our mentors come from prestigious universities worldwide and leading companies nationally and worldwide. They've been through the same journey you're on—feeling anxious, curious, and driven to achieve excellence.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -377,7 +381,7 @@
                                                 <div id="collapseFour" class="accordion-collapse collapse"
                                                     aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <p> We’re dedicated to not only helping you secure your scholarship or Letter of Acceptance (LoA) but also ensuring your success beyond it. We guide you to discover your own "why" and strive for continuous growth and achievement.</p>
+                                                        <p> We're dedicated to not only helping you secure your scholarship or Letter of Acceptance (LoA) but also ensuring your success beyond it. We guide you to discover your own "why" and strive for continuous growth and achievement.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -397,7 +401,7 @@
             <div class="container">
                 <div class="wpo-section-title-s2">
                     <small>Blog</small>
-                    <h2>Let’s KONEK together!</h2>
+                    <h2>Let's KONEK together!</h2>
                 </div>
                 <div class="wpo-blog-items">
                     <div class="row">
