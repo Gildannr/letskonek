@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col col-xs-12">
                         <div class="wpo-breadcumb-wrap">
-                            <h2>Meet Our Mentors</h2>
+                            <h2>Meet Our Team</h2>
                             <ol class="wpo-breadcumb-wrap">
                                 <li><a href="{{ route('home') }}">Home</a></li>
                                 <li>Mentors</li>
@@ -33,7 +33,7 @@
                     <small>Our Professionals</small>
                     <h2>Meet our
                         <span>
-                            Mentors
+                            Team
                             <i class="shape">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 206 53" fill="none">
                                     <path
@@ -84,32 +84,7 @@
                         {{ $mentors->links('vendor.pagination.custom') }}
                     </div>
                 </div>
-            </div> <!-- end container -->
-            <div class="shape-1"><img src="{{ asset('assets/images/team/shape-1.svg') }}" alt=""></div>
-            <div class="shape-2"><img src="{{ asset('assets/images/team/shape-2.svg') }}" alt=""></div>
-            <div class="shape-3"><img src="{{ asset('assets/images/team/shape-3.svg') }}" alt=""></div>
-            <div class="shape-4"><img src="{{ asset('assets/images/team/shape-4.svg') }}" alt=""></div>
+            </div> 
         </section>
         <!-- end Team-section -->
-
-        <!-- start wpo-subscribe-section -->
-        <section class="wpo-subscribe-section section-padding pt-0">
-            <div class="container">
-                <div class="wpo-subscribe-wrap">
-                    <div class="subscribe-text">
-                        <h3>Subscribe to our newsletter to receive
-                            latest news on our services.</h3>
-                    </div>
-                    <div class="subscribe-form">
-                        <form action="#">
-                            <div class="input-field">
-                                <input type="email" placeholder="Enter your email" required>
-                                <button type="submit">Subscribe</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div> <!-- end container -->
-        </section>
-    <!-- end subscribe-section --> 
 @endsection

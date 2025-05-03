@@ -84,18 +84,6 @@
                                     </div>
                                 </form>
                             </div> --}}
-                            
-                            {{-- Category Widget --}}
-                            @if($categories->isNotEmpty())
-                                <div class="widget category-widget">
-                                    <h3>Categories</h3>
-                                    <ul>
-                                        @foreach ($categories as $cat)
-                                            <li><a href="{{ route('blog.category', $cat->slug) }}">{{ $cat->article_category_name }}<span>{{ $cat->articles_count }}</span></a></li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
 
                             {{-- Removed Recent Posts Widget --}}
                             @if($recentPosts->isNotEmpty())
@@ -139,27 +127,4 @@
             </div> <!-- end container -->
         </section>
         <!-- end wpo-blog-pg-section -->
-
-
-        <!-- start wpo-subscribe-section -->
-        {{-- Keeping subscribe section static for now --}}
-        <section class="wpo-subscribe-section section-padding pt-0">
-            <div class="container">
-                <div class="wpo-subscribe-wrap">
-                    <div class="subscribe-text">
-                        <h3>Subscribe to our newsletter to receive 
-                            latest news on our services.</h3>
-                    </div>
-                    <div class="subscribe-form">
-                        <form action="#">
-                            <div class="input-field">
-                                <input type="email" placeholder="Enter your email" required>
-                                <button type="submit">Subscribe</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div> <!-- end container -->
-        </section>
-        <!-- end subscribe-section -->
 @endsection
