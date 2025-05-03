@@ -132,7 +132,7 @@
                 <small>Our Professionals</small>
                 <h2>Meet our
                     <span>
-                        Teachers {{-- Or Teachers if preferred --}}
+                        Teams
                         <i class="shape">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 206 53" fill="none">
                                 <path
