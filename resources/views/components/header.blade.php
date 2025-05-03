@@ -15,7 +15,7 @@
                             </div>
                             <div class="col-lg-3 col-md-4 col-6">
                                 <div class="navbar-header">
-                                    <a class="navbar-brand" href="index.php"><img src="{{asset('assets/images/logo/logo.png')}}" alt="logo"></a>
+                                    <a class="navbar-brand" href="{{ route('home') }}"><img src="{{asset('assets/images/logo/logo.png')}}" alt="logo"></a>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-1 col-1">
@@ -28,27 +28,27 @@
                                             <a style="cursor: pointer;">Services</a>
                                             <ul class="sub-menu">
                                                 <li>
-                                                    <a href="konek.php">Konek Coffe Chat</a>
+                                                    <a href="{{route ('konek')}}">Konek Coffe Chat</a>
                                                 </li>
                                                 <li class="menu-item-has-children">
                                                     <a style="cursor: pointer;">Konek Mentorship</a>
                                                     <ul class="sub-menu">
-                                                        <li><a href="konek.php">Mentorship for Master's Abroad</a></li>
-                                                        <li><a href="konek.php">Mentoring for Scholarship Programs</a></li>
+                                                        <li><a href="{{route ('konek')}}">Mentorship for Master's Abroad</a></li>
+                                                        <li><a href="{{route ('konek')}}">Mentoring for Scholarship Programs</a></li>
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <a href="konek.php">Konek Mock Interviews</a>
+                                                    <a href="{{route ('konek')}}">Konek Mock Interviews</a>
                                                 </li>
                                                 <li>
-                                                    <a href="konek.php">Konek Events</a>
+                                                    <a href="{{route ('konek')}}">Konek Events</a>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li class="menu-item-has-children">
                                             <a href="#">Mentors</a>
                                             <ul class="sub-menu">
-                                                <li><a href="mentors.php">Meet Our Mentors</a></li>
+                                                <li><a href="{{ route('mentors') }}">Meet Our Mentors</a></li>
                                                 <li><a href="#">Application for Mentors</a></li>
                                             </ul>
                                         </li>

@@ -7,6 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MentorsController;
+use App\Http\Controllers\KonekController;
 // use App\Http\Middleware\isLogin;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +19,9 @@ Route::get('/product-detail/{id_product}',[ProductController::class, 'detail'])-
 Route::get('/detail-produk', function () {
     return view('page.produk.detail');
 });
+
+Route::get('/mentors', [MentorsController::class, 'index'])->name('mentors');
+Route::get('/konek', [KonekController::class, 'index'])->name('konek');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
