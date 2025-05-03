@@ -5,266 +5,394 @@
 @section('content')
 
     <!-- start wpo-page-title -->
+    <!-- start wpo-page-title -->
     <section class="wpo-page-title">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <div class="wpo-breadcumb-wrap">
-                            <h2>Latest News</h2>
-                            <ol class="wpo-breadcumb-wrap">
-                                <li><a href="index.html">Home</a></li>
-                                <li>Blog</li>
-                            </ol>
-                        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col col-xs-12">
+                    <div class="wpo-breadcumb-wrap">
+                        <h2>Latest News</h2>
+                        <ol class="wpo-breadcumb-wrap">
+                            <li><a href="index.html">Home</a></li>
+                            <li>Blog</li>
+                        </ol>
                     </div>
-                </div> <!-- end row -->
-            </div> <!-- end container -->
-            <div class="shape-1"><img src="assets/images/shape/1.svg" alt=""></div>
-            <div class="shape-2"><img src="assets/images/shape/2.svg" alt=""></div>
-            <div class="shape-3"><img src="assets/images/shape/3.svg" alt=""></div>
-            <div class="shape-4"><img src="assets/images/shape/4.svg" alt=""></div>
-        </section>
-        <!-- end page-title -->
+                </div>
+            </div> <!-- end row -->
+        </div> <!-- end container -->
+        <div class="shape-1"><img src="assets/images/shape/1.svg" alt=""></div>
+        <div class="shape-2"><img src="assets/images/shape/2.svg" alt=""></div>
+        <div class="shape-3"><img src="assets/images/shape/3.svg" alt=""></div>
+        <div class="shape-4"><img src="assets/images/shape/4.svg" alt=""></div>
+    </section>
+    <!-- end page-title -->
 
-        <!-- start wpo-blog-pg-section -->
-        <section class="wpo-blog-pg-section section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-lg-8">
-                        <div class="wpo-blog-content">
-                            <div class="post format-standard-image">
-                                <div class="entry-media">
-                                    <img src="assets/images/blog/img-4.jpg" alt>
-                                </div>
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li><i class="fi flaticon-user"></i> By <a href="#">Jenny Watson</a> </li>
-                                        <li><i class="fi flaticon-comment-white-oval-bubble"></i> Comments 35 </li>
-                                        <li><i class="fi flaticon-calendar"></i> 24 Jun 2023</li>
-                                    </ul>
-                                </div>
-                                <div class="entry-details">
-                                    <h3><a href="blog-single.html">The Surprising Reason College Tuition Is Crazy Expensive</a></h3>
-                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
-                                        in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                                        It is a long established fact that a reader will be distracted by the readable
-                                         content of a page when looking at its layout.</p>
-                                    <a href="blog-single.html" class="read-more">READ MORE...</a>
-                                </div>
+    <!-- start wpo-blog-single-section -->
+    <section class="wpo-blog-single-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col col-lg-8 col-12">
+                    <div class="wpo-blog-content">
+                        <div class="post format-standard-image">
+                            <div class="entry-media">
+                                <img src="assets/images/blog/img-4.jpg" alt>
                             </div>
-                            <div class="post format-standard">
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li><i class="fi flaticon-user"></i> By <a href="#">Jenny Watson</a> </li>
-                                        <li><i class="fi flaticon-comment-white-oval-bubble"></i> Comments 35 </li>
-                                        <li><i class="fi flaticon-calendar"></i> 24 Jun 2023</li>
-                                    </ul>
-                                </div>
-                                <div class="entry-details">
-                                    <h3><a href="blog-single.html">Become a great WordPress & PHP developer.</a>
-                                    </h3>
-                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
-                                        in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                                        It is a long established fact that a reader will be distracted by the readable
-                                         content of a page when looking at its layout.</p>
-                                    <a href="blog-single.html" class="read-more">READ MORE...</a>
-                                </div>
-                            </div>
-
-                            <div class="post format-gallery">
-                                <div class="entry-media">
-                                    <div class="post-slider owl-carousel">
-                                        <img src="assets/images/blog/img-5.jpg" alt>
-                                        <img src="assets/images/blog/img-4.jpg" alt>
-                                    </div>
-
-                                </div>
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li><i class="fi flaticon-user"></i> By <a href="#">Jenny Watson</a> </li>
-                                        <li><i class="fi flaticon-comment-white-oval-bubble"></i> Comments 35 </li>
-                                        <li><i class="fi flaticon-calendar"></i> 24 Jun 2023</li>
-                                    </ul>
-                                </div>
-                                <div class="entry-details">
-                                    <h3><a href="blog-single.html">A critical review of mobile learning integration</a></h3>
-                                   <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
-                                        in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                                        It is a long established fact that a reader will be distracted by the readable
-                                         content of a page when looking at its layout.</p>
-                                    <a href="blog-single.html" class="read-more">READ MORE...</a>
-                                </div>
-                            </div>
-                            <div class="post format-video">
-                                <div class="entry-media video-holder">
-                                    <img src="assets/images/blog/img-6.jpg" alt>
-                                    <a href="https://www.youtube.com/embed/r5sw-6lJmTA" class="video-btn"
-                                        data-type="iframe">
-                                    </a>
-                                </div>
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li><i class="fi flaticon-user"></i> By <a href="#">Jenny Watson</a> </li>
-                                        <li><i class="fi flaticon-comment-white-oval-bubble"></i> Comments 35 </li>
-                                        <li><i class="fi flaticon-calendar"></i> 24 Jun 2023</li>
-                                    </ul>
-                                </div>
-                                <div class="entry-details">
-                                    <h3><a href="blog-single.html">Become a great WordPress & PHP developer.</a>
-                                    </h3>
-                                   <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
-                                        in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                                        It is a long established fact that a reader will be distracted by the readable
-                                         content of a page when looking at its layout.</p>
-                                    <a href="blog-single.html" class="read-more">READ MORE...</a>
-                                </div>
-                            </div>
-                            <div class="pagination-wrapper pagination-wrapper-left">
-                                <ul class="pg-pagination">
-                                    <li>
-                                        <a href="#" aria-label="Previous">
-                                            <i class="fi ti-angle-left"></i>
-                                        </a>
-                                    </li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li>
-                                        <a href="#" aria-label="Next">
-                                            <i class="fi ti-angle-right"></i>
-                                        </a>
-                                    </li>
+                            <div class="entry-meta">
+                                <ul>
+                                    <li><i class="fi flaticon-user"></i> By <a href="#">Jenny Watson</a> </li>
+                                    <li><i class="fi flaticon-comment-white-oval-bubble"></i> Comments 35 </li>
+                                    <li><i class="fi flaticon-calendar"></i> 24 Jun 2023</li>
                                 </ul>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col col-lg-4">
-                        <div class="blog-sidebar">
-                            <div class="widget about-widget">
-                                <div class="img-holder">
-                                    <img src="assets/images/blog/about-widget.jpg" alt>
+                            <h2>The Surprising Reason College Tuition Is Crazy Expensive</h2>
+                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
+                                in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+                                It is a long established fact that a reader will be distracted by the readable
+                                    content of a page when looking at its layout.</p>
+                            <blockquote>
+                                Combined with a handful of model sentence structures, generate Lorem Ipsum which
+                                looks reasonable. The generated Lorem Ipsum is therefore always free from
+                                repetition, injected humour, or non-characteristic words etc.
+                            </blockquote>
+                            <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising
+                                pain was born and I will give you a complete account of the system, and expound the
+                                actual teachings of the great explorer of the truth, the master-builder of human
+                                happiness. No one rejects, dislikes, or avoids pleasure itself,</p>
+
+                            <div class="gallery">
+                                <div>
+                                    <img src="assets/images/blog-details/1.jpg" alt="">
                                 </div>
-                                <h4>Jenny Alexandra</h4>
-                                <p>Hi! beautiful people. I`m an authtor of this blog. Read our post - stay with us</p>
-                                <div class="social">
-                                    <ul class="clearfix">
+                                <div>
+                                    <img src="assets/images/blog-details/2.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tag-share clearfix">
+                            <div class="tag">
+                                <span>Share: </span>
+                                <ul>
+                                    <li><a href="#">Education</a></li>
+                                    <li><a href="#">Web Design</a></li>
+                                    <li><a href="#">Course</a></li>
+                                </ul>
+                            </div>
+                        </div> <!-- end tag-share -->
+                        <div class="tag-share-s2 clearfix">
+                            <div class="tag">
+                                <span>Share: </span>
+                                <ul>
+                                    <li><a href="#">facebook</a></li>
+                                    <li><a href="#">twitter</a></li>
+                                    <li><a href="#">linkedin</a></li>
+                                    <li><a href="#">pinterest</a></li>
+                                </ul>
+                            </div>
+                        </div> <!-- end tag-share -->
+
+                        <div class="author-box">
+                            <div class="author-avatar">
+                                <a href="#" target="_blank"><img src="assets/images/blog-details/author.jpg"
+                                        alt></a>
+                            </div>
+                            <div class="author-content">
+                                <a href="#" class="author-name">Author: Jenny Watson</a>
+                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+                                    veritatis.</p>
+                                <div class="socials">
+                                    <ul class="social-link">
                                         <li><a href="#"><i class="fi flaticon-facebook-app-symbol"></i></a></li>
                                         <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
                                         <li><a href="#"><i class="fi flaticon-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="ti-pinterest"></i></a></li>
+                                        <li><a href="#"><i class="fi flaticon-instagram-1"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="widget search-widget">
-                                <form>
-                                    <div>
-                                        <input type="text" class="form-control" placeholder="Search Post..">
-                                        <button type="submit"><i class="ti-search"></i></button>
+                        </div> <!-- end author-box -->
+
+                        <div class="more-posts">
+                            <div class="previous-post">
+                                <a href="blog.html">
+                                    <span class="post-control-link">Previous Post</span>
+                                    <span class="post-name">At vero eos et accusamus et iusto odio dignissimos
+                                        ducimus qui blanditiis praesentium.</span>
+                                </a>
+                            </div>
+                            <div class="next-post">
+                                <a href="blog-left-sidebar.html">
+                                    <span class="post-control-link">Next Post</span>
+                                    <span class="post-name">Dignissimos ducimus qui blanditiis praesentiu deleniti
+                                        atque corrupti quos dolores</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="comments-area">
+                            <div class="comments-section">
+                                <h3 class="comments-title">5 Comments</h3>
+                                <ol class="comments">
+                                    <li class="comment even thread-even depth-1" id="comment-1">
+                                        <div id="div-comment-1">
+                                            <div class="comment-theme">
+                                                <div class="comment-image"><img
+                                                        src="assets/images/blog-details/comments-author/img-1.jpg"
+                                                        alt></div>
+                                            </div>
+                                            <div class="comment-main-area">
+                                                <div class="comment-wrapper">
+                                                    <div class="comments-meta">
+                                                        <h4>Robert Sonny <span class="comments-date">says Jul 21,
+                                                                2023 at 10:00am</span></h4>
+                                                    </div>
+                                                    <div class="comment-area">
+                                                        <p>I must explain to you how all this mistaken idea of
+                                                            denouncing pleasure and praising pain was born and I
+                                                            will give you a complete account of the system</p>
+                                                        <div class="comments-reply">
+                                                            <a class="comment-reply-link"
+                                                                href="#"><span>Reply</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="children">
+                                            <li class="comment">
+                                                <div>
+                                                    <div class="comment-theme">
+                                                        <div class="comment-image"><img
+                                                                src="assets/images/blog-details/comments-author/img-2.jpg"
+                                                                alt></div>
+                                                    </div>
+                                                    <div class="comment-main-area">
+                                                        <div class="comment-wrapper">
+                                                            <div class="comments-meta">
+                                                                <h4>John Abraham <span class="comments-date">says
+                                                                        Jul 21, 2023 at 10:00am</span></h4>
+                                                            </div>
+                                                            <div class="comment-area">
+                                                                <p>I must explain to you how all this mistaken idea
+                                                                    of denouncing pleasure and praising pain was
+                                                                    born and I will give you a complete account of
+                                                                    the system</p>
+                                                                <div class="comments-reply">
+                                                                    <a class="comment-reply-link"
+                                                                        href="#"><span>Reply</span></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ul>
+                                                    <li class="comment">
+                                                        <div>
+                                                            <div class="comment-theme">
+                                                                <div class="comment-image"><img
+                                                                        src="assets/images/blog-details/comments-author/img-3.jpg"
+                                                                        alt></div>
+                                                            </div>
+                                                            <div class="comment-main-area">
+                                                                <div class="comment-wrapper">
+                                                                    <div class="comments-meta">
+                                                                        <h4>Robert Sonny <span
+                                                                                class="comments-date">says Jul 21,
+                                                                                2023 at 10:00am</span></h4>
+                                                                    </div>
+                                                                    <div class="comment-area">
+                                                                        <p>I must explain to you how all this
+                                                                            mistaken idea of denouncing pleasure and
+                                                                            praising pain was born and I will give
+                                                                            you a complete account of the system</p>
+                                                                        <div class="comments-reply">
+                                                                            <a class="comment-reply-link"
+                                                                                href="#"><span>Reply</span></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="comment">
+                                        <div>
+                                            <div class="comment-theme">
+                                                <div class="comment-image"><img
+                                                        src="assets/images/blog-details/comments-author/img-1.jpg"
+                                                        alt></div>
+                                            </div>
+                                            <div class="comment-main-area">
+                                                <div class="comment-wrapper">
+                                                    <div class="comments-meta">
+                                                        <h4>John Abraham <span class="comments-date">says Jul 21,
+                                                                2023 at 10:00am</span></h4>
+                                                    </div>
+                                                    <div class="comment-area">
+                                                        <p>I must explain to you how all this mistaken idea of
+                                                            denouncing pleasure and praising pain was born and I
+                                                            will give you a complete account of the system</p>
+                                                        <div class="comments-reply">
+                                                            <a class="comment-reply-link"
+                                                                href="#"><span>Reply</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div> <!-- end comments-section -->
+
+                            <div class="comment-respond">
+                                <h3 class="comment-reply-title">Leave a reply</h3>
+                                <form class="comment-form">
+                                    <div class="form-inputs">
+                                        <input placeholder="Name" type="text">
+                                        <input placeholder="Email" type="email">
+                                        <input placeholder="Website" type="url">
+                                    </div>
+                                    <div class="form-textarea">
+                                        <textarea id="comment" placeholder="Write Your Comments..."></textarea>
+                                    </div>
+                                    <div class="form-submit">
+                                        <input id="submit" value="Post Comment" type="submit">
                                     </div>
                                 </form>
                             </div>
-                            <div class="widget category-widget">
-                                <h3>Categories</h3>
-                                <ul>
-                                    <li><a href="course-single.html">Education<span>5</span></a></li>
-                                    <li><a href="course-single.html">Ai Content <span>7</span></a></li>
-                                    <li><a href="course-single.html">Knowledge<span>3</span></a></li>
-                                    <li><a href="course-single.html">Marketing<span>6</span></a></li>
-                                    <li><a href="course-single.html">Design<span>2</span></a></li>
-                                    <li><a href="course-single.html">Courses<span>8</span></a></li>
-                                </ul>
+                        </div> <!-- end comments-area -->
+                    </div>
+                </div>
+                <div class="col col-lg-4">
+                    <div class="blog-sidebar">
+                        <div class="widget about-widget">
+                            <div class="img-holder">
+                                <img src="assets/images/blog/about-widget.jpg" alt>
                             </div>
-                            <div class="widget recent-post-widget">
-                                <h3>Related Posts</h3>
-                                <div class="posts">
-                                    <div class="post">
-                                        <div class="img-holder">
-                                            <img src="assets/images/recent-posts/img-1.jpg" alt>
-                                        </div>
-                                        <div class="details">
-                                            <h4><a href="blog-single.html">The Surprising Reason College Tuition Is Crazy Expensive</a>
-                                            </h4>
-                                            <span class="date">19 Jun 2023 </span>
-                                        </div>
-                                    </div>
-                                    <div class="post">
-                                        <div class="img-holder">
-                                            <img src="assets/images/recent-posts/img-2.jpg" alt>
-                                        </div>
-                                        <div class="details">
-                                            <h4><a href="blog-single.html">A critical review of mobile learning integration</a></h4>
-                                            <span class="date">22 May 2023 </span>
-                                        </div>
-                                    </div>
-                                    <div class="post">
-                                        <div class="img-holder">
-                                            <img src="assets/images/recent-posts/img-3.jpg" alt>
-                                        </div>
-                                        <div class="details">
-                                            <h4><a href="blog-single.html">Hampden-Sydney College in Virginia</a></h4>
-                                            <span class="date">12 Apr 2023 </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="widget wpo-instagram-widget">
-                                <div class="widget-title">
-                                    <h3>Instagram</h3>
-                                </div>
-                                <ul class="d-flex">
-                                    <li><a href="course-single.html"><img src="assets/images/instragram/1.jpg"
-                                                alt=""></a></li>
-                                    <li><a href="course-single.html"><img src="assets/images/instragram/2.jpg"
-                                                alt=""></a></li>
-                                    <li><a href="course-single.html"><img src="assets/images/instragram/3.jpg"
-                                                alt=""></a></li>
-                                    <li><a href="course-single.html"><img src="assets/images/instragram/4.jpg"
-                                                alt=""></a></li>
-                                    <li><a href="course-single.html"><img src="assets/images/instragram/5.jpg"
-                                                alt=""></a></li>
-                                    <li><a href="course-single.html"><img src="assets/images/instragram/6.jpg"
-                                                alt=""></a></li>
-                                </ul>
-                            </div>
-                            <div class="widget tag-widget">
-                                <h3>Tags</h3>
-                                <ul>
-                                    <li><a href="#">Education</a></li>
-                                    <li><a href="#">Marketing</a></li>
-                                    <li><a href="#">Video</a></li>
-                                    <li><a href="#">Knowledge</a></li>
-                                    <li><a href="#">Design</a></li>
-                                    <li><a href="#">SOCIAL</a></li>
-                                    <li><a href="#">SECURITY</a></li>
-                                    <li><a href="#">Web Design</a></li>
+                            <h4>Jenny Alexandra</h4>
+                            <p>Hi! beautiful people. I`m an authtor of this blog. Read our post - stay with us</p>
+                            <div class="social">
+                                <ul class="clearfix">
+                                    <li><a href="#"><i class="fi flaticon-facebook-app-symbol"></i></a></li>
+                                    <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
+                                    <li><a href="#"><i class="fi flaticon-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="ti-pinterest"></i></a></li>
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div> <!-- end container -->
-        </section>
-        <!-- end wpo-blog-pg-section -->
-
-
-        <!-- start wpo-subscribe-section -->
-        <section class="wpo-subscribe-section section-padding pt-0">
-            <div class="container">
-                <div class="wpo-subscribe-wrap">
-                    <div class="subscribe-text">
-                        <h3>Subscribe to our newsletter to receive 
-                            latest news on our services.</h3>
-                    </div>
-                    <div class="subscribe-form">
-                        <form action="#">
-                            <div class="input-field">
-                                <input type="email" placeholder="Enter your email" required>
-                                <button type="submit">Subscribe</button>
+                        <div class="widget search-widget">
+                            <form>
+                                <div>
+                                    <input type="text" class="form-control" placeholder="Search Post..">
+                                    <button type="submit"><i class="ti-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="widget category-widget">
+                            <h3>Categories</h3>
+                            <ul>
+                                <li><a href="course-single.html">Education<span>5</span></a></li>
+                                <li><a href="course-single.html">Ai Content <span>7</span></a></li>
+                                <li><a href="course-single.html">Knowledge<span>3</span></a></li>
+                                <li><a href="course-single.html">Marketing<span>6</span></a></li>
+                                <li><a href="course-single.html">Design<span>2</span></a></li>
+                                <li><a href="course-single.html">Courses<span>8</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="widget recent-post-widget">
+                            <h3>Related Posts</h3>
+                            <div class="posts">
+                                <div class="post">
+                                    <div class="img-holder">
+                                        <img src="assets/images/recent-posts/img-1.jpg" alt>
+                                    </div>
+                                    <div class="details">
+                                        <h4><a href="blog-single.html">The Surprising Reason College Tuition Is Crazy Expensive</a>
+                                        </h4>
+                                        <span class="date">19 Jun 2023 </span>
+                                    </div>
+                                </div>
+                                <div class="post">
+                                    <div class="img-holder">
+                                        <img src="assets/images/recent-posts/img-2.jpg" alt>
+                                    </div>
+                                    <div class="details">
+                                        <h4><a href="blog-single.html">A critical review of mobile learning integration</a></h4>
+                                        <span class="date">22 May 2023 </span>
+                                    </div>
+                                </div>
+                                <div class="post">
+                                    <div class="img-holder">
+                                        <img src="assets/images/recent-posts/img-3.jpg" alt>
+                                    </div>
+                                    <div class="details">
+                                        <h4><a href="blog-single.html">Hampden-Sydney College in Virginia</a></h4>
+                                        <span class="date">12 Apr 2023 </span>
+                                    </div>
+                                </div>
                             </div>
-                        </form>
+                        </div>
+                        <div class="widget wpo-instagram-widget">
+                            <div class="widget-title">
+                                <h3>Instagram</h3>
+                            </div>
+                            <ul class="d-flex">
+                                <li><a href="course-single.html"><img src="assets/images/instragram/1.jpg"
+                                            alt=""></a></li>
+                                <li><a href="course-single.html"><img src="assets/images/instragram/2.jpg"
+                                            alt=""></a></li>
+                                <li><a href="course-single.html"><img src="assets/images/instragram/3.jpg"
+                                            alt=""></a></li>
+                                <li><a href="course-single.html"><img src="assets/images/instragram/4.jpg"
+                                            alt=""></a></li>
+                                <li><a href="course-single.html"><img src="assets/images/instragram/5.jpg"
+                                            alt=""></a></li>
+                                <li><a href="course-single.html"><img src="assets/images/instragram/6.jpg"
+                                            alt=""></a></li>
+                            </ul>
+                        </div>
+                        <div class="widget tag-widget">
+                            <h3>Tags</h3>
+                            <ul>
+                                <li><a href="#">Education</a></li>
+                                <li><a href="#">Marketing</a></li>
+                                <li><a href="#">Video</a></li>
+                                <li><a href="#">Knowledge</a></li>
+                                <li><a href="#">Design</a></li>
+                                <li><a href="#">SOCIAL</a></li>
+                                <li><a href="#">SECURITY</a></li>
+                                <li><a href="#">Web Design</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div> <!-- end container -->
-        </section>
-        <!-- end subscribe-section -->
+            </div>
+        </div> <!-- end container -->
+    </section>
+    <!-- end wpo-blog-single-section -->
+
+    <!-- start wpo-subscribe-section -->
+    <section class="wpo-subscribe-section section-padding pt-0">
+        <div class="container">
+            <div class="wpo-subscribe-wrap">
+                <div class="subscribe-text">
+                    <h3>Subscribe to our newsletter to receive 
+                        latest news on our services.</h3>
+                </div>
+                <div class="subscribe-form">
+                    <form action="#">
+                        <div class="input-field">
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> <!-- end container -->
+    </section>
+    <!-- end subscribe-section -->
 @endsection
