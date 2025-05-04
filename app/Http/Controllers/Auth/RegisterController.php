@@ -36,9 +36,7 @@ class RegisterController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
-        // Create a new user
-        // Create PwUser first
+        
         $pwUser = PwUser::create([
             'username' => $request->username,
             'nama_lengkap' => $request->fullname,

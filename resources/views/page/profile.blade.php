@@ -69,34 +69,71 @@
 
     <div class="wpo-bread-cumb-area" style="padding: 0 60px 60px 60px">
         <div class="row">
-            <!-- Top Selling -->
+            <!-- Order History -->
             <div class="col-12">
               <div class="card top-selling overflow-auto">
 
                 <div class="card-body pb-0">
-                  <h5 class="card-title">History Order</span></h5>
+                  <h5 class="card-title">History Order</h5>
 
                   <table class="table table-borderless">
                     <thead>
                       <tr>
                         <th scope="col">Preview</th>
                         <th scope="col">Product</th>
+                        <th scope="col">Order Date</th>
+                        <th scope="col">Price</th>
                         <th scope="col">Status</th>
                       </tr>
                     </thead>
                     <tbody>
+                      @php
+                        $orders = App\Models\Order::where('users_id', auth()->user()->id)
+                                ->with('product')
+                                ->orderBy('created', 'desc')
+                                ->get();
+                      @endphp
+
+                      @forelse($orders as $order)
                       <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                        <td>Lunas</td>
+                        <th scope="row">
+                          @if($order->product && $order->product->thumbnail)
+                            <img src="{{ asset('storage/' . $order->product->thumbnail) }}" alt="{{ $order->product->product_name ?? 'Product' }}" width="60">
+                          @else
+                            <img src="{{ asset('assets/images/shop/shop-single/1.jpg') }}" alt="Product" width="60">
+                          @endif
+                        </th>
+                        <td>
+                          <a href="{{ route('order.show', $order->orders_code) }}" class="text-primary fw-bold">
+                            {{ $order->product->product_name ?? 'Unknown Product' }}
+                          </a>
+                        </td>
+                        <td>{{ date('d M Y', strtotime($order->tgl_order)) }}</td>
+                        <td>Rp {{ number_format($order->total_payment, 0, ',', '.') }}</td>
+                        <td>
+                          @if($order->status == 1)
+                            <span class="badge bg-warning">Pending</span>
+                          @elseif($order->status == 2)
+                            <span class="badge bg-success">Completed</span>
+                          @elseif($order->status == 0)
+                            <span class="badge bg-danger">Cancelled</span>
+                          @else
+                            <span class="badge bg-secondary">Unknown</span>
+                          @endif
+                        </td>
                       </tr>
+                      @empty
+                      <tr>
+                        <td colspan="5" class="text-center">No order history found</td>
+                      </tr>
+                      @endforelse
                     </tbody>
                   </table>
 
                 </div>
 
               </div>
-            </div><!-- End Top Selling -->
+            </div><!-- End Order History -->
         </div>
     </div>
 

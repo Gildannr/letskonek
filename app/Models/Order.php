@@ -22,6 +22,7 @@ class Order extends Model
         'product_id',
         'total_payment',
         'price_mentors',
+        'product_price',
         'keterangan',
         'created',
         'author',

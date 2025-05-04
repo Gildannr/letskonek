@@ -43,7 +43,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/profile-update', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('/profile-change-password', [ProfileController::class, 'updatePassword'])->name('profile.change-password');
-    Route::get('/order-show/{order_code}', [OrderController::class, 'show'])->name('order.show');
-    Route::post('/order', [OrderController::class, 'store'])->name('order.store');
+    Route::get('/order/{orders_code}', [OrderController::class, 'show'])->name('order.show');
+    Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+    Route::get('/order/{orders_code}/complete', [OrderController::class, 'markAsCompleted'])->name('order.complete');
+    Route::get('/order/{orders_code}/cancel', [OrderController::class, 'cancel'])->name('order.cancel');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout.post');
 });
